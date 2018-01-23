@@ -2,6 +2,13 @@
  *This file contain JoinTwoArray class which 
  *joins two sorted array into third array. 
  */
+
+/**
+ * JoinTwoArray class includes method join
+ * which returns joined sorted array
+ * @author admin
+ *
+ */
 class JoinTwoArray {
 	
 	/**
