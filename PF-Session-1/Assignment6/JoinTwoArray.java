@@ -6,7 +6,7 @@
 /**
  * JoinTwoArray class includes method join
  * which returns joined sorted array
- * @author admin
+ * @author satyam bhadoria
  *
  */
 class JoinTwoArray {
