@@ -20,7 +20,7 @@ public class GeneratePermutations {
 	 * @param string - to which combination to be generated.
 	 * @return set - set of all possible combination
 	 */
-	List<String> generatePermutations (String string) {
+	protected List<String> generatePermutations (String string) {
 		List<String> set = new ArrayList<String>();			//store set of all possible permutations.
 		
 		/*throw exception if no string is passed or string size 0 is passed*/
@@ -32,13 +32,13 @@ public class GeneratePermutations {
 	}
 	
 	/**
-	 * This method acutally implements the algorithm
+	 * This method actually implements the algorithm
 	 * @param set - 
 	 * @param string - combination to be generated
 	 * @param stringIndex - from which to find permutations
 	 * @return set - set of all permutations
 	 */
-	List<String> generate (List<String> set, String string, int stringIndex) {
+	private List<String> generate (List<String> set, String string, int stringIndex) {
 		char[] str = string.toCharArray();			//store string in array form
 		
 		/*if operation done on final index return set */
