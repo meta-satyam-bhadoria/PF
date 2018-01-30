@@ -17,7 +17,7 @@ public class KnightsTour {
 	 * @param dimension - dimension of chess board
 	 * @return either true or false
 	 */
-	static boolean knightsTour ( int board[][], int dimension) {
+	protected static boolean knightsTour ( int board[][], int dimension) {
 		board[0][0] = 1;
 		return (knightsVisit (board, dimension, 0, 0, 1)) ;
 	}
@@ -30,7 +30,7 @@ public class KnightsTour {
 	 * @param colNum - column number to check
 	 * @return either true or false
 	 */
-	static boolean isSafe ( int board[][], int dimension, int rowNum, int colNum) {
+	protected static boolean isSafe ( int board[][], int dimension, int rowNum, int colNum) {
 		return ( (rowNum >= 0) && (rowNum < dimension) && 
 					(colNum >=0) && (colNum < dimension) && (board[rowNum][colNum] == 0) );
 	}
@@ -43,7 +43,7 @@ public class KnightsTour {
 	 * @param colNum
 	 * @param count - for check whether visited all square or not
 	 */
-	static boolean knightsVisit ( int board[][], int dimension, int rowNum, int colNum, int count) {
+	protected static boolean knightsVisit ( int board[][], int dimension, int rowNum, int colNum, int count) {
 		
 		/*if visited all square return true*/
 		if( count == dimension * dimension) {
