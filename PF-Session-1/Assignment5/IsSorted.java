@@ -9,23 +9,22 @@
  * @author satyam bhadoria
  *
  */
-class IsSorted {
+public class IsSorted {
 	
 	/**
 	 * This method return 0 for unsorted
-	 * 1 for ascending sort
-	 * 2 for descending sort
+	 * return 1 for ascending sort
+	 * return 2 for descending sort
 	 * @param input
 	 */
-	int isSorted (int[] input) {
-        int ascCount = 1;					//holds count for ascending order
-        int descCount = 1;					//holds count for descending order
-        int inputLength = input.length;		//holds array length
+	protected int isSorted (int[] input) {
+        int ascCount = 1;					//count for ascending order
+        int descCount = 1;					//count for descending order
+        int inputLength = input.length;		//array length
         
-        /*check whether array contain 0 or 1 element*/
-        if (inputLength == 1 || inputLength == 0) {
-            return 1;
-        }
+        if (input.length == 0) {
+    		throw new ArithmeticException ("Empty input");
+    	}
         
         /*increment ascending and descending count when elements are greater or lesser than previous elements*/
         for (int i = 1; i < inputLength; i++) {
@@ -40,10 +39,10 @@ class IsSorted {
         }
         
         if (ascCount == inputLength) {
-            return 1;					//return 1 when ascending count is equal to length of array
+            return 1;			
         } else if (descCount == inputLength) {
-            return 2;					//return 2 when descending count is equal to length of array
+            return 2;		
         }
-        return 0;			//return 0 when count(ascending or descending) is not equal to length of array
+        return 0;	
     }
 }
