@@ -4,6 +4,7 @@
  * of second rod such no larger disk can come on smaller disk.
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,11 +25,12 @@ public class TowerOfHanoi {
 	 * @param second
 	 * @return moves
 	 */
-	List<String> towerOfHanoi (List<String> moves, int n, char first, char third, char second) throws DiskError{
+	protected List<String> towerOfHanoi (int n, char first, char third, char second) throws DiskError{
+		List<String> moves =  new ArrayList<String>();		//create list of moves
 		
-		/*throws exception if disk is not greater than 0*/
+		/*throws exception if disk number is not greater than 0*/
 		if(n <= 0){
-			throw new DiskError("Disk number must be greater than zero");
+			throw new DiskError("There should be atleast one disk");
 		}
 		
 		/*move top disk from first to last if only one disk is present*/
@@ -38,15 +40,19 @@ public class TowerOfHanoi {
 		}
 		
 		/*move n-1 disk from first to second*/
-		towerOfHanoi (moves, n-1, first, second, third);
+		moves.addAll( towerOfHanoi (n-1, first, second, third) );
 		moves.add ("Move disk " + n + " from rod " +  first + " to rod " + third);
 		
 		/*move n-1 disk from second to third*/
-		towerOfHanoi (moves, n-1, second, third, first);
+		moves.addAll( towerOfHanoi (n-1, second, third, first) );
 		return moves;
 	}
 }
 
+/**
+ * creating own exception class
+ *
+ */
 class DiskError extends Exception{
 	DiskError(String message){
 		super(message);
