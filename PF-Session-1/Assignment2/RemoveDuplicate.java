@@ -10,7 +10,7 @@ import java.util.*;
  * @author satyam bhadoria
  *
  */
-class RemoveDuplicate {
+public class RemoveDuplicate {
 	
 	/**
 	 * This function finds duplicates by using 
@@ -18,10 +18,17 @@ class RemoveDuplicate {
 	 * @param input
 	 * @return output
 	 */
-	int[] removeDuplicate (int[] input) {
-    	int[] indexArr = new int[input.length];		//stores index of elements of input
-    	int[] output = new int[input.length];		//stores unique elements from input
+	protected int[] removeDuplicate (int[] input) throws Exception{
+    	int[] indexArr;								//stores index of elements of input
+    	int[] output;								//stores unique elements from input
     	int j = 1;									//index for output array
+    	
+    	if (input.length == 0) {
+    		throw new ArithmeticException ("Empty input");
+    	}
+    	
+    	indexArr = new int[input.length];
+    	output = new int[input.length];
     	
     	/*initializes indexArr with index only*/
     	for(int i = 0; i < input.length; i++){
@@ -34,8 +41,6 @@ class RemoveDuplicate {
         /*making indexArr index equal where adjacent elements of input are equal*/
         for (int i =1 ; i < input.length; i++) {
         	if (input[i-1] == input[i]) {
-        		
-        		/*assigning first arriving element index value to next arriving index value.*/
         		indexArr[i] = indexArr[i - 1];		
         	}
         }
@@ -52,7 +57,7 @@ class RemoveDuplicate {
         		continue;
         	}
         	output[j] = input[i];					//copying element
-        	j++;									//increments index for output
+        	j++;									
         }
         
         return Arrays.copyOfRange(output, 0, j );	//returns sub-array of output which are unique elements.
@@ -66,7 +71,7 @@ class RemoveDuplicate {
 	 * @param right
 	 * @param indexArr
 	 */
-    static void merge(int arr[], int left, int middle, int right,int[] indexArr){
+    private void merge(int arr[], int left, int middle, int right,int[] indexArr){
     	
     	/*Find sizes n1 and n2 of two sub-arrays to be merged*/
     	int n1 = middle - left + 1;					
@@ -89,10 +94,10 @@ class RemoveDuplicate {
             rightArr[j] = arr[middle + 1+ j];
             indexRightArr[j] = indexArr[middle + 1+ j];
         }
-        
-        /*merge the temporary sub-arrays*/ 
-        int i = 0, j = 0;							//Initial indexes of first and second sub-arrays
-        int k = left;								//Initial index of merged sub-array array
+         
+        int i = 0;							//Initial index of first sub-arrays
+        int j = 0;							//Initial index of second sub-arrays
+        int k = left;						//Initial index of merged sub-array array
         
         /*copying elements of sub-arrays to array till indexes are less than there corresponding sizes*/
         while (i < n1 && j < n2){
@@ -133,11 +138,11 @@ class RemoveDuplicate {
      * @param right
      * @param indexArr
      */
-    static void sort(int arr[], int left, int right, int[] indexArr){
+    private void sort(int arr[], int left, int right, int[] indexArr){
         if (left < right) {
             int middle = (left + right) / 2;		//finds middle point
             
-            /*find first and second halves*/
+            /*sort first and second halves*/
             sort(arr, left, middle, indexArr);
             sort(arr , middle + 1, right, indexArr);
             
