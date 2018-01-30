@@ -18,12 +18,15 @@ public class QuickSort {
 	 * @param left - low index of array
 	 * @param right - high index of array
 	 */
-	int[] quickSort (int[] inputArr, int left, int right) {
+	protected int[] quickSort (int[] inputArr, int left, int right) {
 		int tempLeft = left;						//temporary left index
 		int tempRight = right;						//temporary right index
 		int key = (tempLeft + tempRight) / 2;		//pivot element for array
 		
-		/*finds left and right element which are larger and smaller than pivot to swap*/
+		if (inputArr.length == 0) {
+			throw new ArithmeticException ("List is empty");
+		}
+		
 		do{
 			
 			/*finds element left to pivot which is larger than pivot*/
