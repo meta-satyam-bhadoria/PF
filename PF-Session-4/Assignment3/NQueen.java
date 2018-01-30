@@ -19,7 +19,7 @@ public class NQueen {
 	 * @param startRow - row number from where queens are going to be placed
 	 * @param dimension - dimension of board
 	 */
-	boolean nQueen (int[][] board, int startRow, int dimension) {
+	protected boolean nQueen (int[][] board, int startRow, int dimension) {
 		
 		/*throw exception if row number is in negative*/
 		if (startRow < 0) {
@@ -60,7 +60,7 @@ public class NQueen {
 	 * @param colNum - current column position
 	 * @param dimension - board size
 	 */
-	boolean isSafe (int[][] board, int rowNum, int colNum, int dimension) {
+	private boolean isSafe (int[][] board, int rowNum, int colNum, int dimension) {
 		return checkColumn (board, rowNum - 1, colNum, dimension);
 	}
 	
@@ -73,7 +73,7 @@ public class NQueen {
 	 * @param dimension - board size
 	 * @return
 	 */
-	boolean checkColumn (int[][] board, int rowNum, int colNum, int dimension) {
+	private boolean checkColumn (int[][] board, int rowNum, int colNum, int dimension) {
 		
 		/*if finds any square already placed with queen return unsafe position
 		 * else check for left diagonal */
@@ -94,7 +94,7 @@ public class NQueen {
 	 * @param dimension - board size
 	 * @return
 	 */
-	boolean checkLeftDiagonal (int[][] board, int rowNum, int colNum, int dimension) {
+	private boolean checkLeftDiagonal (int[][] board, int rowNum, int colNum, int dimension) {
 		
 		/*if finds any square already placed with queen return unsafe position
 		 * else check for right diagonal */
@@ -115,7 +115,7 @@ public class NQueen {
 	 * @param dimension - board size
 	 * @return
 	 */
-	boolean checkRightDiagonal (int[][] board, int rowNum, int colNum, int dimension) {
+	private boolean checkRightDiagonal (int[][] board, int rowNum, int colNum, int dimension) {
 		
 		/*if finds any square already placed with queen return unsafe position else safe*/
 		for (int i = colNum + 1; (i < dimension && rowNum >= 0); i++, rowNum--) {
