@@ -11,31 +11,28 @@
  * @author satyam bhadoria
  *
  */
-class LargestDigit {
+public class LargestDigit {
     
 	/**
 	 * This method finds the largest digit in the number
 	 * itself and returns that digit using recursion
-	 * @param num - number
+	 * @param number - number
 	 * @return largestDigit - gives largest digit in the number
 	 */
-	int largestDigit (int num) {
-        int curDigit;					//store last digit of a number
+	protected int largestDigit (int number) {
+        int currentDigit;					//store last digit of a number
         int largestDigit;				//store largest digit of number
-        num = Math.abs (num);			//making number positive if negative
+        number = Math.abs (number);			//making number positive if negative
         
-        /*finds largest digit of a number*/
-        if (num < 10) {							//base condition for terminating recursion
-            return num;
+        if (number < 10) {							//base condition for terminating recursion
+            return number;
         }
-        curDigit = num % 10;					//copying last digit of a number
-        largestDigit = largestDigit (num / 10);	//reducing number from last digit using recursion
+        currentDigit = number % 10;					//copying last digit of a number
+        largestDigit = largestDigit (number / 10);	//reducing number from last digit using recursion
             
-        /*returns current digit as largest digit if greater than previous largest digit
-           else returns largest digit only
-         */
-        if (largestDigit < curDigit) {
-        	return curDigit;
+        /*returns current digit as largest digit if greater than previous largest digit else returns largest digit only */
+        if (largestDigit < currentDigit) {
+        	return currentDigit;
         }
         return largestDigit;
     }
