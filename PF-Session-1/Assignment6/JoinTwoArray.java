@@ -9,7 +9,7 @@
  * @author satyam bhadoria
  *
  */
-class JoinTwoArray {
+public class JoinTwoArray {
 	
 	/**
 	 * This method join two array in sorted order
@@ -21,10 +21,14 @@ class JoinTwoArray {
 	 * @param c
 	 * @return c
 	 */
-	int[] join(int[] a, int aSize, int[] b, int bSize, int[] c){
+	protected int[] join(int[] a, int aSize, int[] b, int bSize, int[] c){
         int aStartIndex = 0;		//initial index for array a
         int bStartIndex = 0;		//initial index for array b
         int cIndex = 0;				//initial index for array c
+        
+        if (a.length == 0 || b.length == 0) {
+    		throw new ArithmeticException ("Empty input");
+    	}
         
         /*copying elements of two arrays(a and b) to array c till indexes are less than there corresponding sizes*/
         while(aStartIndex < aSize && bStartIndex < bSize){
