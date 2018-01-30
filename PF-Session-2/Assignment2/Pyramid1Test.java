@@ -1,23 +1,26 @@
+/*
+ * This test case file is to test Pyramid1 class working.
+ */
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * class to test Pyramid1 class implementation
+ * @author satyam bhadoria
+ *
+ */
 public class Pyramid1Test {
-	Pyramid1 pyramid = new Pyramid1();
+	protected Pyramid1 pyramid;			//creating object
 	
-	@Test
-	public void testPrint() {
-		int n =- 1;
-		String expected=null;
-		String[] actual = null;
-		try {
-			actual = pyramid.print(n);
-		} catch (PatternException e) {
-			e.printStackTrace();
-		}
-		assertEquals(expected,actual);
+	/*initialize object*/
+	@Before
+	public void init () {
+		pyramid = new Pyramid1();
 	}
 	
+	/*positive test case*/
 	@Test
 	public void testNumbers1(){
 		int n = 5;
@@ -32,78 +35,18 @@ public class Pyramid1Test {
 		assertEquals(expected,actual);
 	}
 	
-	@Test
-	public void testNumbers2() {
+	/*negative test case*/
+	@Test(expected = PatternException.class)
+	public void testNumbers2() throws PatternException{
 		int n = 5;
-		String expected = "1234";
-		String actual = null;
-		try {
-			actual = pyramid.numbers(2, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void testNumbers3() {
-		int n=5;
-		String expected="123";
-		String actual = null;
-		try {
-			actual = pyramid.numbers(3, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
+		String expected="12345";
+		String actual = pyramid.numbers(9, n);
 		assertEquals(expected,actual);
 	}
 	
-	@Test
-	public void testNumbers4() {
-		int n=5;
-		String expected="12";
-		String actual = null;
-		try {
-			actual = pyramid.numbers(4, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
-		assertEquals(expected,actual);
-	}
-	
-	@Test
-	public void testNumbers5() {
-		int n=5;
-		String expected="1";
-		String actual = null;
-		try {
-			actual = pyramid.numbers(5, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
-		assertEquals(expected,actual);
-	}
-	
+	/*positive test case*/
 	@Test
 	public void testSpace1() {
-		int n=5;
-		String expected="";
-		String actual = null;
-		try {
-			actual = pyramid.spaces(1, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
-		assertEquals(expected,actual);
-	}
-	
-	@Test
-	public void testSpace2() {
 		int n=5;
 		String expected=" ";
 		String actual = null;
@@ -116,50 +59,18 @@ public class Pyramid1Test {
 		assertEquals(expected,actual);
 	}
 	
-	@Test
-	public void testSpace3() {
+	/*negative test case*/
+	@Test(expected = PatternException.class)
+	public void testSpace2() throws PatternException {
 		int n=5;
-		String expected="  ";
-		String actual = null;
-		try {
-			actual = pyramid.spaces(3, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
+		String expected=" ";
+		String actual = pyramid.spaces(8, n);
 		assertEquals(expected,actual);
 	}
 	
+	/*positive test case*/
 	@Test
-	public void testSpace4() {
-		int n=5;
-		String expected="   ";
-		String actual = null;
-		try {
-			actual = pyramid.spaces(4, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
-		assertEquals(expected,actual);
-	}
-	
-	@Test
-	public void testSpace5() {
-		int n=5;
-		String expected="    ";
-		String actual = null;
-		try {
-			actual = pyramid.spaces(5, n);
-		} catch (PatternException e) {
-			 
-			e.printStackTrace();
-		}
-		assertEquals(expected,actual);
-	}
-	
-	@Test
-	public void testPyramidint1() {
+	public void testPrint() {
 		int n = 5;
 		String expected[]={ "12345",
 							" 1234",
@@ -174,6 +85,15 @@ public class Pyramid1Test {
 			e.printStackTrace();
 		}
 		assertArrayEquals(expected, actual);
+	}
+	
+	/*negative test case*/
+	@Test(expected = PatternException.class)
+	public void testPrint1() throws PatternException {
+		int n = -1;
+		String expected=null;
+		String[] actual = pyramid.print(n);
+		assertEquals(expected,actual);
 	}
 
 }
