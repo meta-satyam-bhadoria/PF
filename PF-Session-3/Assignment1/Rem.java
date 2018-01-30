@@ -11,18 +11,21 @@
  * @author satyam bhadoria
  *
  */
-class Rem {
+public class Rem {
     
 	/**
 	 * This method returns remainder
 	 * @param num1 - first number 
 	 * @param num2 - second number
 	 */
-	int rem (int num1, int num2) throws ArithmeticException {
+	protected int rem (int num1, int num2) throws ArithmeticException {
 		
-		/*throws exception if second number is 0*/
         if (num2 == 0) {
             throw new ArithmeticException ("Cannot divide by zero");
+        }
+        
+        if (num2 < 0 || num1 < 0) {
+            throw new ArithmeticException ("Number should be greater than zero");
         }
         
         /*return number 1 as remainder if smaller than number 2*/
