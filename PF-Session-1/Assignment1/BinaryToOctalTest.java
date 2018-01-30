@@ -1,44 +1,53 @@
+/*
+ * This test case file is to test BinaryToOctal class working.
+ */
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * class to test BinaryToOctal class implementation
+ * @author satyam bhadoria
+ *
+ */
 public class BinaryToOctalTest {
+	protected BinaryToOctal binToOct;   	//creating object of BinaryToOctal class
 
+	/*initializing object*/
+	@Before
+	public void init(){
+		binToOct = new BinaryToOctal();
+	}
+	
+	/*positive test case 1*/
 	@Test
 	public void test() {
-		BinaryToOctal binToOct = new BinaryToOctal();
-		assertEquals(64, binToOct.convertBinaryToOctal(110100));
+		assertEquals(64, binToOct.convertBinaryToOctal (110100) );
 	}
 	
+	/*positive test case 2*/
 	@Test
 	public void test1() {
-		BinaryToOctal binToOct = new BinaryToOctal();
-		assertEquals(0, binToOct.convertBinaryToOctal(000));
+		assertEquals(0, binToOct.convertBinaryToOctal (000) );
 	}
 	
+	/*positive test case 3*/
 	@Test
 	public void test2() {
-		BinaryToOctal binToOct = new BinaryToOctal();
-		assertEquals(14, binToOct.convertBinaryToOctal(1100));
+		assertEquals(100, binToOct.convertBinaryToOctal (1000000) );
 	}
 	
-	@Test
+	/*negative test case - not a binary number*/
+	@Test(expected = ArithmeticException.class)
 	public void test3() {
-		BinaryToOctal binToOct = new BinaryToOctal();
-		assertEquals(100, binToOct.convertBinaryToOctal(1000000));
+		assertEquals(76, binToOct.convertBinaryToOctal (112140) );
 	}
 	
-	@Test
+	/*negative test case - negative binary number*/
+	@Test(expected = ArithmeticException.class)
 	public void test4() {
-		BinaryToOctal binToOct = new BinaryToOctal();
-		assertEquals(54, binToOct.convertBinaryToOctal(101100));
-	}
-	
-	@Test
-	public void test5() {
-		BinaryToOctal binToOct = new BinaryToOctal();
-		assertEquals(76, binToOct.convertBinaryToOctal(111110));
+		assertEquals(76, binToOct.convertBinaryToOctal (-111110) );
 	}
 
 }
