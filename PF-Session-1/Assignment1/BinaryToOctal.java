@@ -9,7 +9,7 @@
  * 
  * @author Satyam Bhadoria
  */
-class BinaryToOctal {
+public class BinaryToOctal {
 	
 	/**
 	 * This method calculates and returns octal number
@@ -18,47 +18,54 @@ class BinaryToOctal {
 	 * @param binaryNum
 	 * @return octalNum
 	 */
-	int convertBinaryToOctal(int binaryNum){
+	protected int convertBinaryToOctal(int binaryNumber){
 		
-		/*store octal number temporarily for group of max 3 digits of binary number*/
-		int tempOctal = 0;
-		int octalNum = 0;			//store octal number
-		int digit;					//store current working digit of binary number
-		int countOctalLoop = 0;		//counter for calculating tempOctal value
-		int loop = 0;				//counter for positioning tempOctal value to proper position in octalNum
-		
-		/* loop calculating octal number*/
-		while (binaryNum != 0) {
-			digit = binaryNum % 10;	//last digit of binary number
-			
-			/*check whether number is binary or not */
-			if (digit > 1) {
-				System.out.println("Not a binary number");
-				System.exit(0);
-			}
-			
-			/*perform operation only when digit is 1 and calculate tempOctal value*/
-			if (digit == 1) {
-				tempOctal += (int) Math.pow(2, countOctalLoop);
-			}
-			binaryNum /= 10;		//reduce binary number from last digit
-			countOctalLoop++;
-			
-			/*Position tempOctal value in octalNum in proper position */
-			if (countOctalLoop > 2) {
-				octalNum = octalNum + tempOctal * (int) Math.pow(10, loop);
-				countOctalLoop = 0;	//set to 0 again for calculating next tempOctal
-				loop++;
-				tempOctal = 0;		//set to 0 after get positioned in octalNum
-			}
-		}							//end of while loop
-		
-		/*Position tempOctal value in octalNum in proper position 
-		 (if present) to very first left group of less than 3 digit in binary number
-		 */
-		if(countOctalLoop != 0){
-			octalNum = octalNum + tempOctal * (int) Math.pow(10,loop);
+		if (binaryNumber < 0) {
+			throw new ArithmeticException ("Binary number cannot be negative");
 		}
-		return octalNum;			//returns octal number
+		
+		return convertDecimalToOctal ( convertBinaryToDecimal (binaryNumber) );		//return octal number
+	}
+	
+	/**
+	 * method to convert binary number to decimal number
+	 * @param binaryNumber
+	 * @return decimalNumber
+	 */
+	private int convertBinaryToDecimal (int binaryNumber) {
+		int digit;
+		int decimalNumber = 0;
+		int count = 0;
+		
+		/*finds decimal number for given binary number*/
+		while (binaryNumber != 0) {
+			digit = binaryNumber % 10;
+
+			if (digit > 1) {
+				throw new ArithmeticException ("Not a binary number");
+			}
+			decimalNumber += digit * Math.pow(2, count++);
+			binaryNumber /= 10;
+		}
+		return decimalNumber;
+	}
+	
+	/**
+	 * method to convert decimal number to octal number
+	 * @param decimalNumber
+	 * @return octalNumber
+	 */
+	private int convertDecimalToOctal (int decimalNumber) {
+		int digit;
+		int octalNumber = 0;
+		int count = 0;
+		
+		/*finds octal number for given decimal number*/
+		while (decimalNumber != 0) {
+			digit = decimalNumber % 8;
+			octalNumber += digit * Math.pow(10, count++);
+			decimalNumber /= 8;
+		}
+		return octalNumber;
 	}
 }
