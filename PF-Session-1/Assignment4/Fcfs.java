@@ -18,9 +18,13 @@ public class Fcfs {
 	 * @param jobSize
 	 * @return output
 	 */
-	int[][] fcfs(int[] arrivalTime, int[] jobSize){
+	protected int[][] fcfs(int[] arrivalTime, int[] jobSize){
 		int[][] output = new int[arrivalTime.length][5];	//holds job start, wait, arrived and finished time
 		int jobStartTime = 1;								//holds job start time
+		
+		if (arrivalTime.length == 0) {
+    		throw new ArithmeticException ("Empty input");
+    	}
 		
 		/*finds job start, wait, arrived and finished time for each job*/
 		for(int i = 0; i < arrivalTime.length; i++){
