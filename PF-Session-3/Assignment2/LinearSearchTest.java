@@ -1,39 +1,50 @@
+/*
+ * This test case file is to test LinearSearch class working.
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * class to test LinearSearch class implementation
+ * @author satyam bhadoria
+ *
+ */
 public class LinearSearchTest {
-	LinearSearch search;
+	protected LinearSearch search;		//create object
 	
+	/*initialize object*/
 	@Before
 	public void testThis(){
 		search = new LinearSearch();
 	}
-
+	
+	/*positive test case*/
 	@Test
 	public void test() {
 		int[] inputArr = new int[] {2,5,8,9,10,77,55};
-		int element = 88;
+		int elementToSearch = 88;
 		boolean output = false;
-		assertEquals(output, search.linearSearch(inputArr, element, 0));
+		assertEquals(output, search.linearSearch(inputArr, elementToSearch));
 	}
 	
+	/*positive test case*/
 	@Test
 	public void test1() {
 		int[] inputArr = new int[] {2,5,8,9,10, 77, 55};
-		int element = 55;
+		int elementToSearch = 55;
 		boolean output = true;
-		assertEquals(output, search.linearSearch(inputArr, element, 0));
+		assertEquals(output, search.linearSearch(inputArr, elementToSearch));
 	}
 	
-	@Test
+	/*negative test case*/
+	@Test(expected = ArithmeticException.class)
 	public void test2() {
 		int[] inputArr = new int[] {};
-		int element = 77;
+		int elementToSearch = 77;
 		boolean output = false;
-		assertEquals(output, search.linearSearch(inputArr, element, inputArr.length));
+		assertEquals(output, search.linearSearch(inputArr, elementToSearch));
 	}
 
 }
