@@ -13,6 +13,19 @@
 public class BinarySearch {
 	
 	/**
+	 * This method true if element found else false
+	 * @param inputList - array of elements
+	 * @param numToSearch - element to search for
+	 */
+	protected boolean binarySearch (int[] inputList, int numToSearch) {
+
+		if (inputList.length == 0) {
+			throw new ArithmeticException ("List is empty");
+		}
+		return binarySearchFourParam (inputList, numToSearch, 0, inputList.length);
+	}
+	
+	/**
 	 * This method uses recursion to search
 	 * element binary search strategy
 	 * @param inputList - array of elements
@@ -20,7 +33,7 @@ public class BinarySearch {
 	 * @param left - low index of array
 	 * @param right - high index of array 
 	 */
-	boolean binarySearch (int[] inputList, int numToSearch, int left, int right) {
+	private boolean binarySearchFourParam (int[] inputList, int numToSearch, int left, int right) {
 		int middle = (left + right) / 2;	//middle elements in the array
 		
 		/*return false if element not found till left index equals right index*/
@@ -32,10 +45,10 @@ public class BinarySearch {
 		
 		/*call itself if number is left side of middle element*/
 		if (numToSearch < inputList[middle]) {
-			return binarySearch(inputList, numToSearch, left, middle - 1);
+			return binarySearchFourParam(inputList, numToSearch, left, middle - 1);
 		}
 		
 		/*call itself if number is right side of middle element*/
-		return binarySearch(inputList, numToSearch, middle + 1, right);
-	}
+		return binarySearchFourParam(inputList, numToSearch, middle + 1, right);
+	} 
 }
