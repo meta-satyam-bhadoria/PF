@@ -17,9 +17,9 @@ public class LinearSearch {
 	 * This method class linearSearchThreeParam to search element
 	 * @param inputList - array of elements
 	 * @param numToSearch - element to search for
-	 * @return either true or false
+	 * @return either true(found) or false(not found)
 	 */
-	protected boolean linearSearch (int[] inputList, int numToSearch) {
+	public boolean linearSearch (int[] inputList, int numToSearch) {
 		
 		if (inputList.length == 0) {
 			throw new ArithmeticException ("List is empty");
@@ -33,9 +33,9 @@ public class LinearSearch {
 	 * @param inputList - array of elements
 	 * @param numToSearch - element to search for
 	 * @param position - position from where to search
-	 * @return either true or false
+	 * @return either true(found) or false(not found)
 	 */
-	private boolean linearSearchThreeParam (int[] inputList, int numToSearch, int position) {
+	public boolean linearSearchThreeParam (int[] inputList, int numToSearch, int position) {
 		
 		/*returns false if element not found till end of the list*/
 		if (position == inputList.length) {
