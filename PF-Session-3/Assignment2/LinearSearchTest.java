@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  */
 public class LinearSearchTest {
-	protected LinearSearch search;		//create object
+	public LinearSearch search;		//create object
 	
 	/*initialize object*/
 	@Before
@@ -20,7 +20,7 @@ public class LinearSearchTest {
 		search = new LinearSearch();
 	}
 	
-	/*positive test case*/
+	/*successful test case for linear search*/
 	@Test
 	public void test() {
 		int[] inputArr = new int[] {2,5,8,9,10,77,55};
@@ -29,16 +29,16 @@ public class LinearSearchTest {
 		assertEquals(output, search.linearSearch(inputArr, elementToSearch));
 	}
 	
-	/*positive test case*/
+	/*successful test case for linear search*/
 	@Test
 	public void test1() {
-		int[] inputArr = new int[] {2,5,8,9,10, 77, 55};
+		int[] inputArr = new int[] {2,5,8,-9,10,-77, 55};
 		int elementToSearch = 55;
 		boolean output = true;
 		assertEquals(output, search.linearSearch(inputArr, elementToSearch));
 	}
 	
-	/*negative test case*/
+	/*failure test case for linear search when empty list provided*/
 	@Test(expected = ArithmeticException.class)
 	public void test2() {
 		int[] inputArr = new int[] {};
