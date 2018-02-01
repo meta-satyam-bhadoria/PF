@@ -22,7 +22,7 @@ public class LinearSearchTest {
 	
 	/*successful test case for linear search*/
 	@Test
-	public void test() {
+	public void testLinearSearch() {
 		int[] inputArr = new int[] {2,5,8,9,10,77,55};
 		int elementToSearch = 88;
 		boolean output = false;
@@ -31,7 +31,7 @@ public class LinearSearchTest {
 	
 	/*successful test case for linear search*/
 	@Test
-	public void test1() {
+	public void testLinearSearch1() {
 		int[] inputArr = new int[] {2,5,8,-9,10,-77, 55};
 		int elementToSearch = 55;
 		boolean output = true;
@@ -40,7 +40,7 @@ public class LinearSearchTest {
 	
 	/*failure test case for linear search when empty list provided*/
 	@Test(expected = ArithmeticException.class)
-	public void test2() {
+	public void testLinearSearch2() {
 		int[] inputArr = new int[] {};
 		int elementToSearch = 77;
 		boolean output = false;
