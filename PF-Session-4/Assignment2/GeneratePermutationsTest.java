@@ -15,23 +15,23 @@ import org.junit.Test;
  */
 public class GeneratePermutationsTest {
 
-	protected GeneratePermutations generate = new GeneratePermutations();		//creating object
+	public GeneratePermutations generate = new GeneratePermutations();		//creating object
 	
-	/*positive test case*/
+	/*successful test case for generating permutations*/
 	@Test
-	public void test() {
+	public void testGeneratePermutations() {
 		List<String> expected=Arrays.asList("ABC",
-											"ACB",
-											"BAC",
-											"BCA",
-											"CAB",
-											"CBA");
+							"ACB",
+							"BAC",
+							"BCA",
+							"CAB",
+							"CBA");
 		assertEquals(expected, generate.generatePermutations("ABC"));
 	}
 	
-	/*negative test case*/
+	/*failure test case for generating permutations when list is empty*/
 	@Test(expected = ArithmeticException.class)
-	public void test1() {
+	public void testGeneratePermutations1() {
 		List<String> expected=Arrays.asList("");
 		assertEquals(expected, generate.generatePermutations(""));
 	}
