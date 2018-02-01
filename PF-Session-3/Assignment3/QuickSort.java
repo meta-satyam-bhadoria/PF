@@ -17,8 +17,9 @@ public class QuickSort {
 	 * @param inputArr - array of element
 	 * @param left - low index of array
 	 * @param right - high index of array
+	 * @return inputArr - sorted array
 	 */
-	protected int[] quickSort (int[] inputArr, int left, int right) {
+	public int[] quickSort (int[] inputArr, int left, int right) {
 		int tempLeft = left;						//temporary left index
 		int tempRight = right;						//temporary right index
 		int key = (tempLeft + tempRight) / 2;		//pivot element for array
@@ -49,12 +50,12 @@ public class QuickSort {
 			}
 		} while (tempLeft <= tempRight);
 		
-		/*sort sub array left to the array*/
+		/*sort left sub array*/
 		if (left < tempRight) {
 			quickSort(inputArr, left, tempRight);
 		}
 		
-		/*sort sub array right to the array*/
+		/*sort right sub array*/
 		if (right > tempLeft){
 			quickSort(inputArr, tempLeft, right);
 		}
