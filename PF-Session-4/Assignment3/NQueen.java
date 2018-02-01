@@ -17,9 +17,10 @@ public class NQueen {
 	 * This method will place n queens safely.
 	 * @param board - of n X n size
 	 * @param startRow - row number from where queens are going to be placed
-	 * @param dimension - dimension of board
+	 * @param dimensionOfMatrix - dimension of board
+	 * @return true(if all queens are placed) or false(if not)
 	 */
-	protected boolean nQueen (int[][] board, int startRow, int dimension) {
+	public boolean nQueen (int[][] board, int startRow, int dimensionOfMatrix) {
 		
 		/*throw exception if row number is in negative*/
 		if (startRow < 0) {
@@ -27,24 +28,24 @@ public class NQueen {
 		}
 		
 		/*throw exception if dimension is less than 1*/
-		if (dimension <= 0) {
-			throw new ArithmeticException("dimension of board should be greater than 0");
+		if (dimensionOfMatrix <= 0 || dimensionOfMatrix > board[0].length) {
+			throw new ArithmeticException("dimension of board is invalid");
 		}
 		
 		/*returns true if queens placed in every row*/
-		if (startRow >= dimension) {
+		if (startRow >= dimensionOfMatrix) {
 			return true;
 		}
 		
 		/*this loop places queen safely*/
-		for (int colNum = 0; colNum < dimension; colNum++) {
+		for (int colNum = 0; colNum < dimensionOfMatrix; colNum++) {
 			
 			/*place queen if square is safe to place*/
-			if ( isSafe (board, startRow, colNum, dimension) ) {
+			if ( isSafe (board, startRow - 1, colNum, dimensionOfMatrix) ) {
 				board[startRow][colNum] = 1;
 				
 				/*place at next row*/
-				if ( nQueen (board, startRow + 1, dimension) ) {
+				if ( nQueen (board, startRow + 1, dimensionOfMatrix) ) {
 					return true;
 				}
 			}
@@ -58,67 +59,26 @@ public class NQueen {
 	 * @param board - of size nXn
 	 * @param rowNum - current row position
 	 * @param colNum - current column position
-	 * @param dimension - board size
+	 * @param dimensionOfMatrix - board size
+	 * @return true(can be place) or false(cannot be place)
 	 */
-	private boolean isSafe (int[][] board, int rowNum, int colNum, int dimension) {
-		return checkColumn (board, rowNum - 1, colNum, dimension);
-	}
-	
-	/**
-	 * This method checks for squares vertically above the
-	 * current square for safe or unsafe
-	 * @param board - of size nXn
-	 * @param rowNum - current row position
-	 * @param colNum - current column position
-	 * @param dimension - board size
-	 * @return
-	 */
-	private boolean checkColumn (int[][] board, int rowNum, int colNum, int dimension) {
-		
-		/*if finds any square already placed with queen return unsafe position
-		 * else check for left diagonal */
+	public boolean isSafe (int[][] board, int rowNum, int colNum, int dimensionOfMatrix) {
+		/*check for current column upwards*/
 		for (int i = rowNum; i >= 0; i--) {
 			if ( board[i][colNum] == 1 ){
 				return false;
 			}
 		}
-		return checkLeftDiagonal (board, rowNum, colNum, dimension);
-	}
-	
-	/**
-	 * This method checks for squares to diagonally
-	 * left to top to current square for safe or unsafe
-	 * @param board - of size nXn
-	 * @param rowNum - current row position
-	 * @param colNum - current column position
-	 * @param dimension - board size
-	 * @return
-	 */
-	private boolean checkLeftDiagonal (int[][] board, int rowNum, int colNum, int dimension) {
 		
-		/*if finds any square already placed with queen return unsafe position
-		 * else check for right diagonal */
+		/*check for left diagonal upwards*/
 		for (int i = colNum - 1, j = rowNum; (i >= 0 && j >= 0); i--, j--) {
 			if ( board[j][i] == 1 ) {
 				return false;
 			}
 		}
-		return checkRightDiagonal (board, rowNum, colNum, dimension);
-	}
-	
-	/**
-	 * This method checks for squares to diagonally
-	 * right to top to current square for safe or unsafe
-	 * @param board - of size nXn
-	 * @param rowNum - current row position
-	 * @param colNum - current column position
-	 * @param dimension - board size
-	 * @return
-	 */
-	private boolean checkRightDiagonal (int[][] board, int rowNum, int colNum, int dimension) {
 		
-		/*if finds any square already placed with queen return unsafe position else safe*/
-		for (int i = colNum + 1; (i < dimension && rowNum >= 0); i++, rowNum--) {
+		/*check for right diagonal upwards*/
+		for (int i = colNum + 1; (i < dimensionOfMatrix && rowNum >= 0); i++, rowNum--) {
 			if ( board[rowNum][i] == 1 ) {
 				return false;
 			}
