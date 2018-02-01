@@ -18,19 +18,18 @@ public class TowerOfHanoi {
 	/**
 	 * This method returns the list of moves required for
 	 * solving tower of hanoi problem
-	 * @param moves
-	 * @param n
-	 * @param first
-	 * @param third
-	 * @param second
-	 * @return moves
+	 * @param n - number of disk
+	 * @param first - source rod
+	 * @param third - destination rod
+	 * @param second - auxiliary rod
+	 * @return moves - list of moves
 	 */
-	protected List<String> towerOfHanoi (int n, char first, char third, char second) throws DiskError{
+	public List<String> towerOfHanoi (int n, char first, char third, char second) throws ArithmeticException{
 		List<String> moves =  new ArrayList<String>();		//create list of moves
 		
 		/*throws exception if disk number is not greater than 0*/
 		if(n <= 0){
-			throw new DiskError("There should be atleast one disk");
+			throw new ArithmeticException("There should be atleast one disk");
 		}
 		
 		/*move top disk from first to last if only one disk is present*/
@@ -46,15 +45,5 @@ public class TowerOfHanoi {
 		/*move n-1 disk from second to third*/
 		moves.addAll( towerOfHanoi (n-1, second, third, first) );
 		return moves;
-	}
-}
-
-/**
- * creating own exception class
- *
- */
-class DiskError extends Exception{
-	DiskError(String message){
-		super(message);
 	}
 }
