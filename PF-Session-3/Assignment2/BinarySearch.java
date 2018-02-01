@@ -16,8 +16,9 @@ public class BinarySearch {
 	 * This method true if element found else false
 	 * @param inputList - array of elements
 	 * @param numToSearch - element to search for
+	 * @return true(if found) or false( not found)
 	 */
-	protected boolean binarySearch (int[] inputList, int numToSearch) {
+	public boolean binarySearch (int[] inputList, int numToSearch) {
 
 		if (inputList.length == 0) {
 			throw new ArithmeticException ("List is empty");
@@ -32,8 +33,9 @@ public class BinarySearch {
 	 * @param numToSearch - element to search for
 	 * @param left - low index of array
 	 * @param right - high index of array 
+	 * @return true(if found) or false( not found)
 	 */
-	private boolean binarySearchFourParam (int[] inputList, int numToSearch, int left, int right) {
+	public boolean binarySearchFourParam (int[] inputList, int numToSearch, int left, int right) {
 		int middle = (left + right) / 2;	//middle elements in the array
 		
 		/*return false if element not found till left index equals right index*/
