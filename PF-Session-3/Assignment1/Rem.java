@@ -18,7 +18,7 @@ public class Rem {
 	 * @param num1 - first number 
 	 * @param num2 - second number
 	 */
-	protected int rem (int num1, int num2) throws ArithmeticException {
+	public int rem (int num1, int num2) throws ArithmeticException {
 		
         if (num2 == 0) {
             throw new ArithmeticException ("Cannot divide by zero");
