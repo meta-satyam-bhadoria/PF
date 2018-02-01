@@ -11,11 +11,11 @@ import org.junit.Test;
  *
  */
 public class QuickSortTest {
-	protected QuickSort sort = new QuickSort();		//creating object
+	public QuickSort sort = new QuickSort();		//creating object
 	
-	/*positive test case*/
+	/*successful test case for quick sort*/
 	@Test
-	public void test() {
+	public void testQuickSort() {
 		int inputArray[] = new int[] {1,5,2,8,3,9,23,67,13};
 		int startIndex = 0;
 		int endIndex = 8;
@@ -23,9 +23,9 @@ public class QuickSortTest {
 		assertArrayEquals(expected, sort.quickSort(inputArray, startIndex, endIndex));
 	}
 	
-	/*positive test case*/
+	/*successful test case for quick sort*/
 	@Test
-	public void test1() {
+	public void testQuickSort1() {
 		int inputArray[] = new int[] {1,5,2,4,-9,2,-1,-7,65,14};
 		int startIndex = 0;
 		int endIndex = 9;
@@ -33,9 +33,9 @@ public class QuickSortTest {
 		assertArrayEquals(expected, sort.quickSort(inputArray, startIndex, endIndex));
 	}
 	
-	/*positive test case*/
+	/*successful test case for quick sort*/
 	@Test
-	public void test2() {
+	public void testQuickSort2() {
 		int inputArray[] = new int[] {1,1,1,1,1};
 		int startIndex = 0;
 		int endIndex = 4;
@@ -43,9 +43,9 @@ public class QuickSortTest {
 		assertArrayEquals(expected, sort.quickSort(inputArray, startIndex, endIndex));
 	}
 	
-	/*negative test case*/
+	/*failure test case for quick sort when empty array is provided*/
 	@Test(expected = ArithmeticException.class)
-	public void test3() {
+	public void testQuickSort3() {
 		int inputArray[] = new int[] {};
 		int startIndex = 0;
 		int endIndex = 0;
