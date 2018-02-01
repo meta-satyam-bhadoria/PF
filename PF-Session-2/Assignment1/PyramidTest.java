@@ -20,11 +20,11 @@ public class PyramidTest {
 		pyramid = new Pyramid();
 	}
 	
-	/*positive test case*/
+	/*successful test case for printing numbers*/
 	@Test
 	public void testNumbers1() {
-		int n=9;
-		String expected="12321";
+		int n = 9;
+		String expected= "12321";
 		String actual = null;
 		try {
 			actual = pyramid.numbers(3, n);
@@ -35,19 +35,19 @@ public class PyramidTest {
 		assertEquals(expected,actual);
 	}
 	
-	/*negative test case*/
+	/*failure test case for printing numbers*/
 	@Test(expected = PatternException.class)
 	public void testNumbers2() throws PatternException {
-		int n=9;
+		int n = 9;
 		String expected="12321";
 		String actual = pyramid.numbers(20, n);
 		assertEquals(expected,actual);
 	}
 	
-	/*positive test case*/
+	/*successful test case for printing spaces*/
 	@Test
 	public void testSpace1() {
-		int n=9;
+		int n = 9;
 		String expected="      ";
 		String actual = null;
 		try {
@@ -59,7 +59,7 @@ public class PyramidTest {
 		assertEquals(expected,actual);
 	}
 	
-	/*negative test case*/
+	/*failure test case for printing spaces*/
 	@Test(expected = PatternException.class)
 	public void testSpace2() throws PatternException {
 		int n=9;
@@ -68,7 +68,7 @@ public class PyramidTest {
 		assertEquals(expected,actual);
 	}
 	
-	/*positive test case*/
+	/*successful test case for printing pattern*/
 	@Test
 	public void testPrint() {
 		int n = 9;
@@ -99,10 +99,10 @@ public class PyramidTest {
 		assertArrayEquals(expected, actual);
 	}
 	
-	/*negative test case*/
+	/*failure test case for printing pattern*/
 	@Test(expected = PatternException.class)
 	public void testPrint1() throws PatternException {
-		int n =- 1;
+		int n = -1;
 		String expected = null;
 		String[] actual = pyramid.print(n);
 		assertEquals(expected,actual);
