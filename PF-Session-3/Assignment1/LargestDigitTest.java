@@ -2,52 +2,36 @@
  * This test case file is to test LargestDigit class working.
  */
 import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 /**
  * class to test LargestDigit class implementation
  * @author satyam bhadoria
  *
  */
-@RunWith(Parameterized.class)
 public class LargestDigitTest {
-	protected LargestDigit largest = new LargestDigit();
+	public LargestDigit largestDigit;			//creating object
 	
-	/*inputs and expected output as parameters*/
-	@Parameters
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] {
-				{ 7, 1234567 } , { 4, 12341412 } , { 9, 54379542} , { 9, -54379542},{0,000}
-		});
+	/*initialize object*/
+	@Before
+	public void init () {
+		largestDigit = new LargestDigit();
 	}
 	
-	/*variables for inputs and expected output*/
-	private int fInput;
-	private int fExpected;
-	
-	/**
-	 * method for initializing variables declared above
-	 */
-	public LargestDigitTest(int expected, int input) {
-		fInput= input;
-		fExpected= expected;
-	}
-	
-	/*test cases*/
+	/*successful test case for finding largest digit*/
 	@Test
-	public void test() {
-		try{
-			assertEquals(fExpected, largest.largestDigit(fInput));
-		}
-		catch (ArithmeticException e) {
-			e.printStackTrace();
-		}
+	public void testLargestDigit() {
+		int expected = 2;
+		int actual = largestDigit.largestDigit(20);
+		assertEquals(expected, actual);
+	}
+
+	/*successful test case for finding largest digit*/
+	@Test
+	public void testLargestDigit1() {
+		int expected = 9;
+		int actual = largestDigit.largestDigit(-5594385);
+		assertEquals(expected, actual);
 	}
 }
