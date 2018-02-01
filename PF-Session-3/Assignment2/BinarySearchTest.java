@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  */
 public class BinarySearchTest {
-	protected BinarySearch search;		//create object
+	public BinarySearch search;		//create object
 	
 	/*initialize object*/
 	@Before
@@ -20,27 +20,27 @@ public class BinarySearchTest {
 		search = new BinarySearch();
 	}
 
-	/*positive test case*/
+	/*successful test case for binary search*/
 	@Test
-	public void test() {
+	public void testBinarySearch() {
 		int[] inputArr = new int[] {2,5,8,9,10,55,77};
 		int element = 88;
 		boolean output = false;
 		assertEquals(output, search.binarySearch(inputArr, element));
 	}
 	
-	/*positive test case*/
+	/*successful test case for binary search*/
 	@Test
-	public void test1() {
+	public void testBinarySearch1() {
 		int[] inputArr = new int[] {2,5,8,9,10,55,77,88};
-		int element = 77;
+		int element = 88;
 		boolean output = true;
 		assertEquals(output, search.binarySearch(inputArr, element));
 	}
 	
-	/*negative test case*/
+	/*failure test case for binary search when empty list provided*/
 	@Test(expected = ArithmeticException.class)
-	public void test2() {
+	public void testBinarySearch2() {
 		int[] inputArr = new int[] {};
 		int element = 77;
 		boolean output = false;
