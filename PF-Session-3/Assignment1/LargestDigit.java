@@ -19,7 +19,7 @@ public class LargestDigit {
 	 * @param number - number
 	 * @return largestDigit - gives largest digit in the number
 	 */
-	protected int largestDigit (int number) {
+	public int largestDigit (int number) {
         int currentDigit;					//store last digit of a number
         int largestDigit;				//store largest digit of number
         number = Math.abs (number);			//making number positive if negative
