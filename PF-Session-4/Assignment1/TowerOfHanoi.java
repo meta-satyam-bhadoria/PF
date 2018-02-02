@@ -40,15 +40,15 @@ public class TowerOfHanoi {
 		/*move top disk from first to last if only one disk is present*/
 		if (n == 1) {
 			moves.add ("Move disk 1 from rod " +  first + " to rod " + third);
-			return moves;
+		} else {
+		
+			/*move n-1 disk from first to second*/
+			moves.addAll( towerOfHanoiUtil (n-1, first, second, third) );
+			moves.add ("Move disk " + n + " from rod " +  first + " to rod " + third);
+			
+			/*move n-1 disk from second to third*/
+			moves.addAll( towerOfHanoiUtil (n-1, second, third, first) );
 		}
-		
-		/*move n-1 disk from first to second*/
-		moves.addAll( towerOfHanoiUtil (n-1, first, second, third) );
-		moves.add ("Move disk " + n + " from rod " +  first + " to rod " + third);
-		
-		/*move n-1 disk from second to third*/
-		moves.addAll( towerOfHanoiUtil (n-1, second, third, first) );
 		return moves;
 	}
 }
