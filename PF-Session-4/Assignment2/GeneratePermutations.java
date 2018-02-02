@@ -44,20 +44,20 @@ public class GeneratePermutations {
 		/*if operation done on final index return set */
 		if(stringIndex == string.length()){
 			set.add(string);
-			return set;
-		}
+		} else{
 		
-		/*perform operation from string index to final index to find permutations*/
-		for(int i = stringIndex; i <= string.length(); i++){
-			string = new String(str, 0, string.length());
-			
-			generate(set, string, stringIndex + 1);			//repeat process recursive on sub string
-			
-			/*swap two adjacent letters to create new string*/
-			if(i < string.length()){
-				char temporaryChar = str[i];
-				str[i] = str[stringIndex - 1];
-				str[stringIndex - 1] = temporaryChar;
+			/*perform operation from string index to final index to find permutations*/
+			for(int i = stringIndex; i <= string.length(); i++){
+				string = new String(str, 0, string.length());
+				
+				generate(set, string, stringIndex + 1);			//repeat process recursive on sub string
+				
+				/*swap two adjacent letters to create new string*/
+				if(i < string.length()){
+					char temporaryChar = str[i];
+					str[i] = str[stringIndex - 1];
+					str[stringIndex - 1] = temporaryChar;
+				}
 			}
 		}
 		return set;
