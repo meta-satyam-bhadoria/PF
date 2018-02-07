@@ -26,7 +26,7 @@ public class SortQuestion {
 			/*finds the smallest element*/
 			for(int j = i+1; j < questionList.size(); j++){
 				
-				if( questionList.get(j).getQuestion(). compareTo(temp) < 0){
+				if( questionList.get(j).getQuestion(). compareToIgnoreCase(temp) < 0){
 					temp = questionList.get(j).getQuestion();
 					tempQuestion = questionList.get(j);
 				}
