@@ -28,16 +28,9 @@ public class Workflow {
 	}
 	
 	/**
-	 * method to return the transition list
-	 * @return transitionList - contains all the transition 
-	 */
-	public List<Transition> getTransitionList () {
-		return this.transitionList;
-	}
-	
-	/**
 	 * method that adds the event in event list and manages the next move
 	 * @param event - the current event that occurred
+	 * @throws NullPointerException - throws this type of exception
 	 */
 	public void transitionStep (Event event) throws NullPointerException {
 		
@@ -49,6 +42,45 @@ public class Workflow {
 		/*method called to check the type of event that occurred*/
 		checkEvent (event , event.getEventName() );
 		
+	}
+
+	/**
+	 * method that checks if the event has reject or ok keyword in it
+	 * @param event - object of event class in which variable ok or reject have to 
+	 * be changed
+	 * @param eventStatus - name of the event to be checked
+	 * @return status - string status of candidate
+	 */
+	public String checkEvent (Event event , String eventStatus) {
+		String status = null;
+		
+		event.changeStatus (eventStatus);					//change the status of variable
+			
+		if ( event.isReject() ) {
+			status = "Rejected";
+			
+			Transition transition = new Transition (currentState, currentState, event);
+			this.transitionList.add (transition);
+		
+		} else {
+			currentState = stateList.get (++stateCounter);		//initializes current state to the next state
+			
+			if (currentState.getStateName () == "offer") {
+				status = "Selected";
+			}
+			Transition transition = new Transition ( stateList.get (stateCounter - 1), currentState, event);
+			transitionList.add (transition);
+		}
+		
+		return status;
+	}
+	
+	/**
+	 * method to return the transition list
+	 * @return transitionList - contains all the transition 
+	 */
+	public List<Transition> getTransitionList () {
+		return this.transitionList;
 	}
 	
 	/**
@@ -72,39 +104,6 @@ public class Workflow {
 	 */
 	public List<Event> getEventList () {
 		return this.eventList;
-	}
-
-	/**
-	 * method that checks if the event has reject or ok keyword in it
-	 * @param event - object of event class in which variable ok or reject have to 
-	 * be changed
-	 * @param eventStatus - name of the event to be checked
-	 * @return status - string status of candidate
-	 */
-	public String checkEvent (Event event , String eventStatus) {
-		String status = null;
-		
-		event.changeStatus (eventStatus);					//change the status of variable
-			
-		if ( event.isReject() ) {
-			status = "Rejected";
-			
-			Transition transition = new Transition (currentState, currentState, event);
-			this.transitionList.add (transition);
-		
-		}
-
-		if ( event.isOk() ) {
-			currentState = stateList.get (++stateCounter);		//initializes current state to the next state
-			
-			if (currentState.getStateName () == "offer") {
-				status = "Selected";
-			}
-			Transition transition = new Transition ( stateList.get (stateCounter - 1), currentState, event);
-			transitionList.add (transition);
-		}
-		
-		return status;
 	}
 	
 	/**
