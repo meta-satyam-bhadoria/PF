@@ -82,6 +82,36 @@ public class TestWorkflow {
 				 							"management Interviewoffermanagement ok"));
 		assertEquals(expected,actual);
 	}
+	
+	/**
+	 * method to test for failure for selection
+	 */
+	@Test
+	public void testSelectedFailure() {
+		
+		Event event1 = new Event("hr process");
+		w.transitionStep(event1);
+		Event event2 = new Event("hr ok");
+		w.transitionStep(event2);
+		Event event3 = new Event("l1 ok");
+		w.transitionStep(event3);
+		Event event4 = new Event("l2 ok");
+		w.transitionStep(event4);
+		Event event5 = new Event("management ok");
+		w.transitionStep(event5);
+		
+		List<Transition> actualObject = w.getTransitionList();
+		List<String> actual = new ArrayList<String>() ;
+		actual.add("Selected");
+		for(Transition transition : actualObject) {
+			actual.add(transition.getInitialState().getStateName() + transition.getFinalState().getStateName() + transition.getEvent().getEventName());
+		}
+		List<String> expected = new ArrayList<String>();
+		expected.addAll(Arrays.asList("Selected","starthr Reviewhr process" ,"hr Reviewl1 Interviewhr ok" ,
+										"l2 Interviewmanagement Interviewl2 ok" , 
+				 							"management Interviewoffermanagement ok"));
+		assertNotEquals(expected,actual);
+	}
 
 	/**
 	 * method to test for success of rejection
@@ -111,7 +141,7 @@ public class TestWorkflow {
 	}
 	
 	/**
-	 * method to test for reject process failure
+	 * method to test for reject process failure - Negative test case
 	 */
 	@Test
 	public void testRejectFailure() {
