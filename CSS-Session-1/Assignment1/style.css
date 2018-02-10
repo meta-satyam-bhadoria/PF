@@ -12,185 +12,153 @@ a:link{
 	text-decoration: none;
 	color: black;
 }
-.header{
-	background: url("cover pic1.jpg");
-	background-size: cover;
-	background-position: 0px -80px;
-	height: 270px;
+.container{
 	position: relative;
+	padding-left: 15px;
+	padding-right:15px;
+	margin-left:auto;
+	margin-right: auto;
 }
-.heading{
-	position: absolute;
-	top: 75px;
-	right: 100px;
-	font-size: 50px;
-	color:white;
-	letter-spacing: 10px;
-	text-shadow: 0px 3px 4px rgba(0,0,0,1),0px -3px 4px rgba(0,0,0,1),
-					3px 0px 4px rgba(0,0,0,1),-3px 0px 4px rgba(0,0,0,1);
-}
-.profile-container{
-	position: absolute;
-	width:300px;
-	z-index: 1;
-	top: 150px;
-	left: 50px;
-	animation-name: example;
-	animation-duration: 2s;
-}
-.profile{
-	box-shadow: 0px 0px 7px rgba(0,0,0,1)
-}
-.profile-pic{
-}
-.profile-pic img{
-	width: 100%;
-}
-@keyframes example{
-	from{top: 0px;}
-	to{top: 150px;}
-}
-.about-container{
-	height: 100px;
-}
-.about-wrap{
-	position: absolute;
-	width:100%;
-	height:100%;
-}
-.name{
-	padding: 0 15px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 26px;
-}
-.about-me{
-	padding: 0 15px;
-	text-align: justify;
-}
-.navbar{
-	margin-left: 400px;
-	width: calc(100% - 400px);
-}
-.nav{
-	width: 100%;
-	position:relative;
-}
-.nav label{
-	display: inline-block;
-	padding: 10px 15px;
-	font-size: 18px;
-	font-weight: bold;
-	cursor: pointer;
-	margin: 0 5px;
-	color: #008975
-}
-.label{
-	animation-name: label-animation;
-	animation-duration: 2s;
-}
-@keyframes label-animation{
-	from{padding: 10px 0px;}
-	to{padding:10px 15px;}
-}
-.navbar-item{
-	position: absolute;
-	width: 100%;
-}
-.toggle{
-	display: none;
-	position: absolute;
-}
-.bio-paragraph{
-	text-indent: 30px;
-	text-align: justify;
-	padding:0 20px;
-	line-height: 2em;
-	font-size: 17px;
-	font-family: 'Nanum Gothic Coding', monospace;
-}
-.item4{
-	top: 100px;
-}
-input:checked + .toggle{
-	display: block;
+.row{
+	margin-left: -15px;
+	margin-right: -15px;
 }
 .flex{
 	display: flex;
 }
-.col3{
-	flex: 3;
+.auto-padding{
+	padding: 10px 15px;
 }
-.col9{
-	flex: 9;
+.right{
+	float: right;
 }
 .center{
 	text-align: center;
 }
-.card-container{
-	flex:1;
+.img{
+	width: 100%;
+}
+
+/* header starts*/
+.header{
+	width: 100%;
+	background: grey;
+}
+.heading{
+	width: 200px;
+}
+.heading h1{
+	color: white;
+}
+.flex-auto{
+	flex: auto;
+}
+.col{
+	flex: .5;
+}
+.ul{
+	list-style-type: none;
+}
+.ul li{
+	display: inline-block;
+	margin: 12px 0;
+}
+.ul li a{
+	padding: 10px 15px;
+	color: white;
+}
+/*header ends */
+
+/* cover profile starts */
+.cover-photo{
+	background-size: cover;
+	height: 250px;
+	position: relative;
+}
+.profile-pic-container{
+	position: absolute;
+	top: 100px;
+	left: 50px;
+}
+.profile-pic-wrap{
+	box-shadow: 0px 0px 7px rgba(0,0,0,1);
+	width: 270px;
+	transition: .5s;
+}
+.profile-pic-wrap:hover{
+	transform: scale(1.05);
+	box-shadow: 2px 0px 4px rgba(0,0,0,1),
+				-2px 0px 4px rgba(0,0,0,1),
+				0px 2px 4px rgba(0,0,0,1),
+				0px -2px 4px rgba(0,0,0,1);
+}
+.profile-about p{
+	padding-bottom: 10px;
+	text-align: justify;
+}
+/* cover profile ends */
+
+/* profile starts */
+.navbar .ul label{
+	cursor: pointer;
+}
+.profile-container{
+	width: calc(100% - 350px);
+	margin-left: 350px;
+}
+.profile-wrap{
+	width: 100%;
+}
+.toggle{
+	display: none;
+}
+input:checked + .toggle{
+	display: block;
+}
+#contact-information .toggle, #education-information .toggle{
+	margin-top: 35px;
 }
 .card{
-	height: 200px;
-	position:relative;
+	box-shadow: 0px 2px 4px rgba(0,0,0,.6);
 	margin: 0 10px;
+	transition: .5s;
 }
-.card-wrap{
-	box-shadow:0px 3px 7px #008975;
-}
-.animate-top{
-	position: absolute;
-	width:100%;
-	height:100%;
-	animation-name: animate-top;
-	animation-duration: 2s;
-}
-@keyframes animate-top{
-	from{top: -50px;}
-	to{top: 0px;}
-}
-.animate-down{
-	position: absolute;
-	width:100%;
-	height:100%;
-	animation-name: animate-down;
-	animation-duration: 2s;
-}
-@keyframes animate-down{
-	from{bottom: -50px;}
-	to{bottom: 0px;}
-}
-.card-icon{
-	box-shadow: 0px 3px 5px rgba(0,0,0,1);
-	width: 100px;
-	height: 100px;
-	position: absolute;
-	z-index: 1;
-	border-radius: 50%;
-	background: #00bf9a;
-	top: -50px;
-	left: calc(50% - 50px);
+.card:hover{
+	box-shadow: 0 3px 4px rgba(0,0,0,.8),
+				0 -1px 4px rgba(0,0,0,.5);
 }
 .card-heading{
-	font-size: 26px;
-	font-weight: bold;
-	padding: 10px 5px;
-}
-.top-margin{
-	margin-top: 60px;
-}
-.card-detail{
 	font-size: 20px;
-	color: grey;
-	padding: 10px 10px;
+	font-weight: bold;
+	padding: 10px 15px;
 }
-.card-year{
-	font-size: 18px;
-	color:grey;
-	padding: 10px 10px;
+.card-body p:last-child{
+	margin-bottom: 10px;
 }
-.break:after,.break:before{
-	clear:both;
-	display: table;
+.card-icon{
+	background: linear-gradient(#514940,#776b5f,#514940);
+    height: 80px;
+    width: 80px;
+	margin: -35px auto 0;
+    border-radius: 50%;
+	color: white;
+    box-shadow: 0px 3px 7px rgba(0,0,0,1)
+}
+.card-ico{
+	margin-top: 25px;
+}
+/* profile ends */
+.block:before,.block:after{
 	content: "";
+	display: table;
+}
+.top-fixed{
+	position: fixed;
+	top: 0;
+	left:0;
+	z-index:100;
+	width: 100%;
+}
+.block:after{
+	clear: both;
 }
