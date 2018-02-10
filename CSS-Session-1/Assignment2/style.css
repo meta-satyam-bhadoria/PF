@@ -113,7 +113,7 @@ input[type=button]{
 	margin-left: 5px;
 	font-weight: bold;
 }
-.break:after,.break:before{
+.block:after,.block:before{
 	content: "";
 	display: table;
 	clear: both;
