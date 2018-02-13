@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Satyam Bhadoria">
+	<title>Transform Effects</title>
+	<style>
+		.box{
+			transition: 1s transform;
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 20px auto;
+			text-align:center;
+		}
+		#first:hover{
+			transform: rotate(30deg);
+		}
+		#second:hover{
+			transform: scale(2,2);
+		}
+		#third:hover{
+			transform: skew(10deg,20deg);
+		}
+		#fourth-parent:hover #fourth{
+			transform: translate(100px,200px);
+		}
+	</style>
+</head>
+<body>
+	<div id="first" class="box">Rotate</div>
+	<div id="second" class="box">Scale</div>
+	<div id="third" class="box">Skew</div>
+	<div id="fourth-parent">
+		<div id="fourth" class="box">Translate</div>
+	</div>
+</body>
+</html>
