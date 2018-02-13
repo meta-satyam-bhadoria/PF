@@ -1,0 +1,224 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: 'Raleway', sans-serif;
+	color: #4c5e71;
+	letter-spacing: 1px;
+}
+*:focus{
+	outline: none;
+}
+a:link{
+	text-decoration: none;
+	color: black;
+}
+.theme-1-para{
+	color: #939e9f;
+	line-height: 1.5em;
+}
+.uppercase{
+	text-transform: uppercase;
+}
+.container{
+	position: relative;
+	padding-left: 15px;
+	padding-right:15px;
+	margin-left:auto;
+	margin-right: auto;
+}
+.row{
+	margin-left: -15px;
+	margin-right: -15px;
+}
+@media(min-width: 768px){
+	.flex{
+		display: flex;
+	}
+	.flex-1{
+		flex: 1;
+	}
+	.flex-auto{
+		flex: auto;
+	}
+}
+.auto-padding{
+	padding: 8px 15px;
+}
+.right{
+	float: right;
+}
+.center{
+	text-align: center;
+}
+.img{
+	width: 100%;
+}
+.white{
+	color: white;
+}
+
+/* header starts*/
+.header{
+	width: 100%;
+	background: #2d3e50;
+}
+.heading{
+	width: 200px;
+	display: inline-block;
+}
+@media(min-width: 768px){
+	.heading{
+		//margin-top: 8px;
+	}
+}
+.heading h1{
+	color: white;
+	padding: 10px;
+	font-size: 24px;
+	font-weight: normal;
+}
+@media(max-width: 767px){
+	.navbar{
+		float: right;
+	}
+}
+.col{
+	flex: .5;
+}
+.ul{
+	list-style-type: none;
+}
+.ul li{
+	display: inline-block;
+	margin: 15px 0;
+}
+.ul .active a{
+	color: white;
+}
+.ul li a{
+	padding: 10px 15px;
+	color: #328dd6;
+}
+/*header ends */
+
+/*cover starts*/
+.cover{
+	background: #328dd6;
+}
+.cover{
+	padding: 10% 0;
+}
+.cover-head h1{
+	display: inline-block;
+	border: 2px solid white;
+	border-radius: 5px;
+	padding: 2% 15%;
+	color: white;
+	font-size: 40px;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+.cover-para{
+	color: #d1e7f6;
+	margin: 15px 0;
+}
+.cover button{
+	font-weight:bold;
+	background: white;
+	border: 2px solid white;
+	border-radius: 5px;
+	padding: 10px 20px;
+	color: #328dd6;
+	cursor: pointer;
+	transition: .5s background, .5s color;
+}
+@media(min-width: 768px){
+	.cover button:hover{
+		background: #328dd6;
+		color: white;
+	}
+}
+/*cover ends*/
+
+/*tour starts*/
+#tour h2{
+	margin: 40px 0 20px;
+}
+#tour{
+	margin-bottom: 30px;
+}
+.category{
+	margin: 10px;
+}
+.category h3{
+	color: #328dd6;
+	font-weight: bold;
+}
+.category p{
+	margin-top: 15px;
+}
+.icon-fa{
+	padding-right: 10px;
+	color: #328dd6;
+}
+.row4{
+	padding: 70px 10px;
+}
+.row4 img{
+	margin: 0 10px;
+}
+/*tour ends*/
+
+/*signup starts*/
+input[type=text],input[type=email],input[type=password]{
+	width: 93%;
+	padding:10px 0;
+	text-indent: 10px;
+	border: 2px solid #dfdfdf;
+	border-radius:5px;
+	margin: 8px 0 15px;
+}
+input[type=submit]{
+	margin: 8px 0 15px;
+	padding: 10px 25px;
+	border:none;
+	border-radius: 5px;
+	background: #328dd6;
+	color: white;
+	cursor: pointer;
+}
+.form-group label{
+	font-weight: bold;
+}
+#sign-up h2{
+	margin: 50px 0;
+}
+#contact{
+	margin-bottom: 15px;
+}
+#contact h3{
+	margin: 20px 0;
+}
+/*signup ends*/
+
+/*footer starts*/
+.footer{
+	background: #111;
+	padding: 15px 0;
+}
+/*footer ends*/
+
+.top-fixed{
+	position: fixed;
+	top: 0;
+	left:0;
+	z-index:100;
+	width: 100%;
+}
+.block:before,.block:after{
+	content: "";
+	display: table;
+}
+.block:after{
+	clear: both;
+}
