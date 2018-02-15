@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML-Session-2 Assignment1</title>
+	<meta name="author" content="Satyam Bhadoria" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		*:focus{
+			outline: none;
+		}
+		body{
+			background:#ededed;
+		}
+		.heading{
+			margin: 20px 20px 10px 20px;
+			border-bottom: 1px solid #cfcfcf;
+		}
+		table tr td div{
+			margin: 10px 0;
+		}
+		.bold{
+			font-weight: bold;
+		}
+		.text-right{
+			text-align: right;
+			padding-right: 20px;
+		}
+		.text-left{
+			text-align: left;
+			padding-left: 20px;
+		}
+		form{
+			width: 50%;
+		}
+		.icon{
+			padding: 10px 0;
+			width: 30px;
+			text-align: center;
+			font-size: 1em;
+			border: 1px solid #cfcfcf;
+			border-right: none;
+			border-radius: 5px 0 0 5px;
+			display: inline-block;
+		}
+		.input{
+			width: 450px;
+		}
+		input[placeholder], select option{
+			font-weight: bold;
+		}
+		input[type="text"], input[type="email"], input[type="number"], input[type="url"]{
+			position: absolute;
+			width: 400px;
+			border: 1px solid #cfcfcf;
+			padding: 10px 0 11px;
+			text-indent: 10px;
+			border-radius: 0 5px 5px 0;
+		}
+		label{
+			background: linear-gradient(#f0ac4a,#eea032,#f0ac4a);
+			padding: 10px 10px;
+			margin-top: 20px;
+			border-radius: 5px;
+			border: 2px solid #e79638;
+			color: white;
+		}
+		input[type=submit]{
+			border:none;
+			background:transparent;
+			color: white;
+			font-weight: bold;
+		}
+		select{
+			position: absolute;
+			border: 1px solid #cfcfcf;
+			width: 400px;
+			text-indent: 10px;
+			padding: 9px 0 10px;
+			border-radius: 0 5px 5px 0;
+		}
+		textarea{
+			position: absolute;
+			border: 1px solid #cfcfcf;
+			padding: 10px 0 11px;
+			width: 400px;
+			border-radius: 0 5px 5px 0;
+		}
+		input:invalid{
+			border: 1px solid red;
+			box-shadow: 0px 0px 3px rgba(255,0,0,1);
+		}
+	</style>
+</head>
+<body>
+	<div class="heading">
+		<h1>Contact Us Today!</h1>
+	</div>
+	
+	<!-- form -->
+	<div align="center" style="margin:20px 0;">
+		<form>
+			<table>
+				<tbody>
+					<tr>
+						<td><div class="text-right bold">First Name</div></td>
+						<td><div class="text-left input"><i class="fa fa-user icon" aria-hidden="true"></i><input type="text" title="Use  only alphabets" placeholder="First Name" pattern="[A-Za-z]{1,15}"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Last Name</div></td>
+						<td><div class="text-left input"><i class="fa fa-user icon" aria-hidden="true"></i><input type="text" title="Use  only alphabets" placeholder="Last Name" pattern="[A-Za-z]{1,15}"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">E-Mail</div></td>
+						<td><div class="text-left input"><i class="fa fa-envelope icon"  aria-hidden="true"></i><input type="email" title="Use  correct email address" placeholder="E-Mail Address"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Phone #</div></td>
+						<td><div class="text-left input"><i class="fa fa-phone icon" aria-hidden="true"></i><input type="text"  title="10 digit number only"placeholder="(845)555-1212" pattern="[1-9]+[0-9]{9}"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Address</div></td>
+						<td><div class="text-left input"><i class="fa fa-home icon"  aria-hidden="true"></i><input type="text" placeholder="Address"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">City</div></td>
+						<td><div class="text-left input"><i class="fa fa-home icon" aria-hidden="true"></i><input type="text"  title="Alphabets and space are allowed"placeholder="City" pattern="[A-Za-z\s]{1,15}"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">State</div></td>
+						<td><div class="text-left input"><i class="fa fa-list icon" aria-hidden="true"></i><select>
+								<option selected disabled>Please select your state</option>
+								<option>Madhya Pradesh</option>
+								<option>Rajasthan</option>
+							</select>
+						</div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Zip Code</div></td> 
+						<td><div class="text-left input"><i class="fa fa-home icon" aria-hidden="true"></i><input type="text"  title="6 digit zip code" placeholder="Zip Code" pattern="([1-9])([0-9]){0,5}"/></div></td> 
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Website or domain name</div></td>
+						<td><div class="text-left input"><i class="fa fa-globe icon" aria-hidden="true"></i><input type="url"  title="Use https or http" placeholder="Website or domain name" pattern="(WWW.)([a-z])(.)([a-z]./){0,*}"/></div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Do you have hosting?</div></td>
+						<td><div class="text-left input">
+							<input type="radio" name="host" value="Yes"/>Yes<br>
+							<input type="radio" name="host" value="No"/>No
+						</div></td>
+					</tr>
+					<tr>
+						<td><div class="text-right bold">Project Description</div></td>
+						<td><div class="text-left input">
+							<i class="fa fa-pencil icon" aria-hidden="true"></i><textarea rows="1" placeholder="Project Description"></textarea>
+						</div></td>
+					</tr>
+					<tr style="margin-top:20px;">
+						<td><div class="text-right"></div></td>
+						<td><div class="text-left input"><label><input type="submit" value="Send"><i class="fa fa-paper-plane"></i></label></div></td>
+					</tr>
+				</div>	
+			</div>
+		</form>
+	</div>
+</body>
+</html>
