@@ -1,12 +1,12 @@
 /* Method to bind events to the selectors */
-window.js = function(selector,cb) {
+window.js = function(selector) {
 	
-	var selectors = document.querySelectorAll(selector);
+	var selectors = document.querySelectorAll (selector);
 	
 	/* method to add events to each selector*/
-	function onEvent(event, cb) {
-		selectors.forEach(function(selector){
-			selector.addEventListener(event, cb);
+	function onEvent (event, func) {
+		selectors.forEach ( function (selector) {
+			selector.addEventListener (event, func);
 		});
 	};
 	
