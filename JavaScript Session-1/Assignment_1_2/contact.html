@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript-Session-1 Assignment2</title>
+	<meta name="author" content="Satyam Bhadoria">
+</head>
+<body>
+	<div align="center">
+	
+		<!-- navigation bar -->
+		<nav id="navbar">
+			<table width="1000">
+				<tbody align="center">
+					<tr>
+						<td width="100">
+							<img src="images/HTML5.png" width="50"/>
+						</td>
+						<td align="right">
+							<a href="javascript:void(0)" onclick="location.href='index.html'">Home</a>
+							<a href="">About</a>
+							<a href="">Product</a>
+							<a href="">Gallery</a>
+							<a href="javascript:void(0)" onclick="location.href='contact.html'">Contact</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</nav>
+		<hr>
+		<br>
+		
+		<div id="image-container">
+			<table width="1000">
+				<tbody align="center">
+					<tr>
+						<td>
+							<img src="images/contact_us.jpg" width="1000"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<!-- form -->
+		<div id="form-container">
+			<form action="" method="get" onsubmit = "return validateSubmit()">
+				<table>
+					<tbody>
+						<tr>
+							<td>Name</td>
+							<td><input type="text" onkeyup="validateName(this.value)" /><br><div id="name"></div></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="email" onkeyup="validateEmail(this.value)" /><br><div id="email"></div></td>
+						</tr>
+						<tr>
+							<td>City</td>
+							<td><select onclick="validateSelect(this.value)">
+									<option selected disabled value="">Select city</option>
+									<option>Jaipur</option>
+									<option>Gwalior</option>
+								</select><br><div id="city"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>Organization <br>Name</td>
+							<td><input type="text" onkeyup="validateOrganization(this.value)" /><br><div id="organization"></div></td>
+						</tr>
+						<tr>
+							<td>Contact <br>Number</td>
+							<td><input type="text" onkeyup="validateContact(this.value)" /><br><div id="contact"></div></td>
+						</tr>
+						<tr>
+							<td>Message</td>
+							<td>
+								<textarea id="textarea" onkeyup="validateTextarea(this.value)" onchange="validateTextareaCopy(this.value)"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Submit" /></td>
+						</tr>
+					</tbody>	
+				</table>
+			</form>
+		</div>
+		<hr>
+		
+		<!-- footer -->
+		<div id="footer">
+			<table width="1000">
+				<tbody align="center">
+					<tr>
+						<td>
+							&copy; Copyright 2016-17 | All Rights Reserved | Metacube Training
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<script src="js/validate-script.js"></script>
+</body>
+</html>
