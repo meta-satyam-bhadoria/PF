@@ -3,10 +3,11 @@ package com.metacube.shoppingcart.facade;
 import java.util.List;
 
 import com.metacube.shoppingcart.dao.BaseDao;
-import com.metacube.shoppingcart.dao.DatabaseEnum;
 import com.metacube.shoppingcart.dao.InMemoryProductDao;
+import com.metacube.shoppingcart.dao.ProductDao;
 import com.metacube.shoppingcart.dao.ProductDaoFactory;
 import com.metacube.shoppingcart.entity.Product;
+import com.metacube.shoppingcart.enumm.DatabaseEnum;
 
 public class ProductFacade {
 	private static ProductFacade data;
@@ -21,11 +22,17 @@ public class ProductFacade {
 	
 	private ProductFacade() {}
 	
-	BaseDao baseDao = (InMemoryProductDao) ProductDaoFactory.getInstance(DatabaseEnum.in_memory);
+	BaseDao<Product> baseDao = (InMemoryProductDao) ProductDaoFactory.getInstance(DatabaseEnum.in_memory);
 	
 	public void addItem(Product item) {
 		if(!searchProduct(item)){
 			baseDao.addItem(item);
+		}
+	}
+	
+	public void removeItem(Product item) {
+		if (searchProduct(item)) {
+			baseDao.removeItem(item);
 		}
 	}
 	
@@ -36,5 +43,11 @@ public class ProductFacade {
 	
 	public List<Product> getList(){
 		return baseDao.getList();
+	}
+	
+	public void updateItem(Product item, String name, float price, int stock){
+		if (searchProduct(item)) {
+			((ProductDao) baseDao).updateItem(item, name, price, stock);
+		}
 	}
 }
