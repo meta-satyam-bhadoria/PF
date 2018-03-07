@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.metacube.shoppingcart.entity.Product;
 
-public class InMemoryProductDao implements ProductDao<T>{
+public class InMemoryProductDao implements ProductDao{
 	Map<String, Product> productMap = new HashMap<>();
 	
 	
@@ -33,7 +34,9 @@ public class InMemoryProductDao implements ProductDao<T>{
 		productMap.remove(item.getId());
 	}
 	
-	public void updateItem(Product item) {
-		
+	public void updateItem(Product item, String name, float price, int stock) {
+		item.setName(name);
+		item.setPrice(price);
+		item.setStock(stock);
 	}
 }

@@ -1,19 +1,22 @@
 package com.metacube.shoppingcart.dao;
 
+import com.metacube.shoppingcart.entity.Product;
+import com.metacube.shoppingcart.enumm.DatabaseEnum;
+
 public class ProductDaoFactory {
 	
-	private static BaseDao baseDao;
+	private static BaseDao<Product> baseProductDao;
 	private ProductDaoFactory() {}
 	
-	public static BaseDao getInstance(DatabaseEnum type) {
+	public static BaseDao<Product> getInstance(DatabaseEnum type) {
 		switch(type){
 		case in_memory:
-			baseDao = InMemoryProductDao.getInstance();
+			baseProductDao = InMemoryProductDao.getInstance();
 			break;
 		case sql:
-			baseDao = null;
+			baseProductDao = null;
 			break;
 		}
-		return baseDao;
+		return baseProductDao;
 	}
 }
