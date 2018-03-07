@@ -3,18 +3,7 @@
 <head>
 	<meta name="author" content="Satyam Bhadoria" />
 	<title>JavaScript-Session-3 Assignment 3</title>
-	<style>
-		*{
-			margin:0;
-			padding:0;
-		}
-		div{
-			width: 25%;
-			float:left;
-			text-align: center;
-			margin-top: 40px;
-		}
-	</style>
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 	<div>
@@ -29,23 +18,12 @@
 		</select>
 	</div>
 	<div>
-		<input type='radio' data-id="#h" name='second' />State
+		<input type='radio' data-id="#h" name='radio' />State
 		<br><br>
-		<input type='radio' data-id="#g" name='second' />City
+		<input type='radio' data-id="#g" name='radio' />City
 	</div>
 	
-	<script src="script.js"></script>
-	<script>
-		
-		/*adding onclick event to the radio button*/
-		js("input[name='second']").on('click', function () {
-			show(this.getAttribute('data-id'));
-		});
-		
-		/* method to show or alert the value of select tag with respect to radio button*/
-		function show(id){
-			alert(document.querySelector(id).value);
-		}
-	</script>
+	<script src="js/script.js"></script>
+	<script src="js/assignment-3.js"></script>
 </body>
 </html>
