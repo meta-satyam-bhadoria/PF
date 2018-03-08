@@ -42,6 +42,11 @@ public class ShoppingCart extends BaseEntity {
 	}
 
 	public void setQuantity(Product item, int quantity) {
-		this.list.replace(item, quantity);
+		this.list.put(item, quantity);
+	}
+	
+	public void removeProduct(Product item){
+		this.list.remove(item);
+		this.subTotal.remove(item);
 	}
 }

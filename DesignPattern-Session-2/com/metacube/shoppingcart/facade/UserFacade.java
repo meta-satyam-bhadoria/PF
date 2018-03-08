@@ -34,7 +34,7 @@ public class UserFacade {
 	
 	public void removeItem(String slNo) {
 		if(searchUser(slNo)){
-			baseDao.removeItem(slNo);
+			baseDao.removeItem(getUser(slNo));
 		}
 	}
 	
@@ -46,9 +46,9 @@ public class UserFacade {
 		return new ArrayList<>(baseDao.getList().values());
 	}
 
-	public void updateItem(String slNo, String name, String email, String password) {
-		if(searchUser(slNo)){
-			((UserDao) baseDao).updateItem(((InMemoryUserDao) baseDao).getUser(slNo), name, email, password);
+	public void updateItem(String userId, String name, String email, String password) {
+		if(searchUser(userId)){
+			((UserDao) baseDao).updateItem(getUser(userId), name, email, password);
 		}
 	}
 	
@@ -64,5 +64,9 @@ public class UserFacade {
 
 	public ShoppingCart createUserCart(User user) {
 		return new ShoppingCart(user.getEmail());
+	}
+	
+	public User getUser(String userId){
+		return ((InMemoryUserDao) baseDao).getUser(userId);
 	}
 }

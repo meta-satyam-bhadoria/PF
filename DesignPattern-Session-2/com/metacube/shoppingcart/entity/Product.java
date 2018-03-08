@@ -28,6 +28,6 @@ public class Product extends BaseEntity{
 	}
 	
 	public void setUpdatedStock(int quantity){
-		this.stock += quantity;
+		this.stock = quantity;
 	}
 }

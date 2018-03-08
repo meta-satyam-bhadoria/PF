@@ -28,8 +28,8 @@ public class InMemoryUserDao implements UserDao{
 		userMap.put(item.getId(), item);
 	}
 	
-	public void removeItem(String slNo) {
-		userMap.remove(slNo);
+	public void removeItem(User user) {
+		userMap.remove(user.getId());
 	}
 	
 	public void updateItem(User item, String name, String email, String password) {

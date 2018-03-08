@@ -29,14 +29,13 @@ public class InMemoryShoppingCartDao implements ShoppingCartDao{
 		shoppingCartMap.put(userId, cart);
 	}
 	
-	public void addItem(String userId, Product item, int quantity, float subTotal, float total){
+	public void addItem(String userId, Product item, int quantity, float subTotal){
 		shoppingCartMap.get(userId).setQuantity(item, quantity);
 		shoppingCartMap.get(userId).setSubTotal(item, subTotal);
-		shoppingCartMap.get(userId).setTotal(total);
 	}
 	
-	public void removeItem(String slNo) {
-		shoppingCartMap.remove(slNo);
+	public void removeItem(Product productId, String userId) {
+		shoppingCartMap.get(userId).removeProduct(productId);
 	}
 	
 	public void updateItem(ShoppingCart item) {
@@ -49,5 +48,13 @@ public class InMemoryShoppingCartDao implements ShoppingCartDao{
 	
 	public void addItem(ShoppingCart cart) {
 		
+	}
+	
+	public void removeItem(ShoppingCart cart){
+		
+	}
+	
+	public void updateTotal(float total, String userId){
+		shoppingCartMap.get(userId).setTotal(total);
 	}
 }

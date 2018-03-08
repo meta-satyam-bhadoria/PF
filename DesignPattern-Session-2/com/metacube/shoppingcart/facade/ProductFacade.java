@@ -31,13 +31,13 @@ public class ProductFacade {
 		}
 	}
 	
-	public void removeItem(String slNo) {
-		if (searchProduct(slNo)) {
-			baseDao.removeItem(slNo);
+	public void removeItem(String productId) {
+		if (searchProduct(productId)) {
+			baseDao.removeItem(getProduct(productId));
 		}
 	}
 	
-	private boolean searchProduct(String slNo){
+	public boolean searchProduct(String slNo){
 		return baseDao.getList().containsKey(slNo);
 	}
 	
@@ -45,9 +45,9 @@ public class ProductFacade {
 		return new ArrayList<>(baseDao.getList().values());
 	}
 	
-	public void updateItem(String slNo, String name, float price, int stock){
-		if (searchProduct(slNo)) {
-			((ProductDao) baseDao).updateItem(getProduct(slNo), name, price, stock);
+	public void updateItem(String productId, String name, float price, int stock){
+		if (searchProduct(productId)) {
+			((ProductDao) baseDao).updateItem(getProduct(productId), name, price, stock);
 		}
 	}
 	

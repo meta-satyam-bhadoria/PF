@@ -28,14 +28,14 @@ public class InMemoryProductDao implements ProductDao{
 		productMap.put(item.getId(), item);
 	}
 	
-	public void removeItem(String slNo) {
-		productMap.remove(slNo);
+	public void removeItem(Product item) {
+		productMap.remove(item.getId());
 	}
 	
 	public void updateItem(Product item, String name, float price, int stock) {
 		item.setName(name);
 		item.setPrice(price);
-		item.setStock(stock);
+		item.setUpdatedStock(stock);
 	}
 	
 	public Product getProduct(String slNo) {

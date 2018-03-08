@@ -33,12 +33,12 @@ public class Controller {
 		productFacade.addItem(item);
 	}
 	
-	public void remove(Product item) {
-		productFacade.removeItem(item);
+	public void removeProduct(String productId) {
+		productFacade.removeItem(productId);
 	}
 	
-	public void update(Product item, String name, float price, int stock){
-		productFacade.updateItem(item, name, price, stock);
+	public void update(String productId, String name, float price, int stock){
+		productFacade.updateItem(productId, name, price, stock);
 	}
 	
 	public List<Product> getProductList() {
@@ -52,17 +52,18 @@ public class Controller {
 	public void add(User item){
 		userFacade.addItem(item);
 		ShoppingCart cart = userFacade.createUserCart(item);
+		System.out.println("new cart created for user" + cart);
 		ShoppingCartFacade shoppingCartFacade = ShoppingCartFacade.getInstance();
 		shoppingCartFacade.createCart(item.getEmail(), cart);
 		
 	}
 	
-	public void remove(User item) {
-		userFacade.removeItem(item);
+	public void removeUser(String userId) {
+		userFacade.removeItem(userId);
 	}
 	
-	public void update(User item, String name, String email, String password){
-		userFacade.updateItem(item, name, email, password);
+	public void update(String userId, String name, String email, String password){
+		userFacade.updateItem(userId, name, email, password);
 	}
 	
 	public List<User> getUserList() {
