@@ -120,8 +120,7 @@ public class Input {
 					System.out.println(p.getId()+"\t"+p.getName()+"\t\t"+p.getPrice()+"\t\t"+p.getStock());
 				}
 				System.out.println("Enter S.No. of product and quantity to add to cart");
-				ShoppingCart cartProduct = new ShoppingCart(userName, list.get(inputScanner.nextInt() - 1), inputScanner.nextInt());
-				cartController.add(cartProduct);
+				cartController.addToCart(userName, list.get(inputScanner.nextInt()), inputScanner.nextInt());
 				break;
 			case 2:
 				break;

@@ -1,10 +1,9 @@
 package com.metacube.shoppingcart.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import com.metacube.shoppingcart.entity.Product;
 import com.metacube.shoppingcart.entity.ShoppingCart;
 
 public class InMemoryShoppingCartDao implements ShoppingCartDao{
@@ -22,19 +21,33 @@ public class InMemoryShoppingCartDao implements ShoppingCartDao{
 	}
 	
 	
-	public List<ShoppingCart> getList() {
-		return new ArrayList<>(shoppingCartMap.values());
+	public Map<String, ShoppingCart> getList() {
+		return shoppingCartMap;
 	}
 	
-	public void addItem(ShoppingCart item){
-		shoppingCartMap.put(item.getName(), item);
+	public void createCart(String userId, ShoppingCart cart){
+		shoppingCartMap.put(userId, cart);
 	}
 	
-	public void removeItem(ShoppingCart item) {
-		shoppingCartMap.remove(item.getId());
+	public void addItem(String userId, Product item, int quantity, float subTotal, float total){
+		shoppingCartMap.get(userId).setQuantity(item, quantity);
+		shoppingCartMap.get(userId).setSubTotal(item, subTotal);
+		shoppingCartMap.get(userId).setTotal(total);
+	}
+	
+	public void removeItem(String slNo) {
+		shoppingCartMap.remove(slNo);
 	}
 	
 	public void updateItem(ShoppingCart item) {
+		
+	}
+	
+	public ShoppingCart returnCart(String userId) {
+		return shoppingCartMap.get(userId);
+	}
+	
+	public void addItem(ShoppingCart cart) {
 		
 	}
 }

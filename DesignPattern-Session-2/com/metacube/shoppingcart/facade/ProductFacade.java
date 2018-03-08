@@ -1,5 +1,6 @@
 package com.metacube.shoppingcart.facade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.metacube.shoppingcart.dao.BaseDao;
@@ -25,29 +26,32 @@ public class ProductFacade {
 	BaseDao<Product> baseDao = (InMemoryProductDao) ProductDaoFactory.getInstance(DatabaseEnum.in_memory);
 	
 	public void addItem(Product item) {
-		if(!searchProduct(item)){
+		if(!searchProduct(item.getId())){
 			baseDao.addItem(item);
 		}
 	}
 	
-	public void removeItem(Product item) {
-		if (searchProduct(item)) {
-			baseDao.removeItem(item);
+	public void removeItem(String slNo) {
+		if (searchProduct(slNo)) {
+			baseDao.removeItem(slNo);
 		}
 	}
 	
-	private boolean searchProduct(Product item){
-		List<Product> list = baseDao.getList();
-		return list.contains(item);
+	private boolean searchProduct(String slNo){
+		return baseDao.getList().containsKey(slNo);
 	}
 	
 	public List<Product> getList(){
-		return baseDao.getList();
+		return new ArrayList<>(baseDao.getList().values());
 	}
 	
-	public void updateItem(Product item, String name, float price, int stock){
-		if (searchProduct(item)) {
-			((ProductDao) baseDao).updateItem(item, name, price, stock);
+	public void updateItem(String slNo, String name, float price, int stock){
+		if (searchProduct(slNo)) {
+			((ProductDao) baseDao).updateItem(getProduct(slNo), name, price, stock);
 		}
+	}
+	
+	public Product getProduct(String slNo) {
+		return ((InMemoryProductDao) baseDao).getProduct(slNo);
 	}
 }

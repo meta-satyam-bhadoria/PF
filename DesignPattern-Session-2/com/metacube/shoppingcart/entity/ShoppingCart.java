@@ -8,14 +8,19 @@ public class ShoppingCart extends BaseEntity {
 	private float total;
 	private Map<Product, Float> subTotal = new HashMap<>();
 	private Map<Product, Integer> list= new HashMap<>();
-
-	public ShoppingCart(String name, Product item, int quantity) {
-		super(Integer.toString(countId++), name);
-		this.total = 0;
-		this.list.put(item, quantity);
-		this.list.put(item, 0);
-	}
 	
+	public Map<Product, Float> getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(Product item, float subTotal) {
+		this.subTotal.put(item, subTotal);
+	}
+
+	public ShoppingCart(String email) {
+		super(Integer.toString(countId++), email);
+	}
+
 	public Map<Product,Integer> getProductQuantity() {
 		return list;
 	}

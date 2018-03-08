@@ -1,8 +1,6 @@
 package com.metacube.shoppingcart.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.metacube.shoppingcart.entity.User;
@@ -22,21 +20,25 @@ public class InMemoryUserDao implements UserDao{
 	}
 	
 	
-	public List<User> getList() {
-		return new ArrayList<>(userMap.values());
+	public Map<String, User> getList() {
+		return userMap;
 	}
 	
 	public void addItem(User item){
 		userMap.put(item.getId(), item);
 	}
 	
-	public void removeItem(User item) {
-		userMap.remove(item.getId());
+	public void removeItem(String slNo) {
+		userMap.remove(slNo);
 	}
 	
 	public void updateItem(User item, String name, String email, String password) {
 		item.setEmail(email);
 		item.setName(name);
 		item.setPassword(password);
+	}
+	
+	public User getUser(String slNo) {
+		return userMap.get(slNo);
 	}
 }

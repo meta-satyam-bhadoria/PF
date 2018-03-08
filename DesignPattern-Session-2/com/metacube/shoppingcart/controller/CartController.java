@@ -2,6 +2,7 @@ package com.metacube.shoppingcart.controller;
 
 import java.util.List;
 
+import com.metacube.shoppingcart.entity.Product;
 import com.metacube.shoppingcart.entity.ShoppingCart;
 import com.metacube.shoppingcart.facade.ShoppingCartFacade;
 import com.metacube.shoppingcart.facade.UserFacade;
@@ -28,8 +29,8 @@ public class CartController {
 	}
 	
 	
-	public void add(ShoppingCart item){
-		shoppingCartFacade.addItem(item);
+	public void addToCart(String userId, Product product, int quantity ){
+		shoppingCartFacade.addItem(userId, product, quantity);
 	}
 	
 	public void remove(ShoppingCart item) {

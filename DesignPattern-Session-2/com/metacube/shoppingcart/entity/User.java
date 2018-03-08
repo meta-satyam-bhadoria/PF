@@ -9,7 +9,7 @@ public class User extends BaseEntity{
 		this.email = email;
 		this.password = password;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}

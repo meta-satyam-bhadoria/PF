@@ -3,8 +3,10 @@ package com.metacube.shoppingcart.controller;
 import java.util.List;
 
 import com.metacube.shoppingcart.entity.Product;
+import com.metacube.shoppingcart.entity.ShoppingCart;
 import com.metacube.shoppingcart.entity.User;
 import com.metacube.shoppingcart.facade.ProductFacade;
+import com.metacube.shoppingcart.facade.ShoppingCartFacade;
 import com.metacube.shoppingcart.facade.UserFacade;
 
 public class Controller {
@@ -21,8 +23,8 @@ public class Controller {
 	
 	private Controller() {}
 	
-	ProductFacade productFacade = ProductFacade.getInstance();
-	UserFacade userFacade = UserFacade.getInstance();
+	private ProductFacade productFacade = ProductFacade.getInstance();
+	private UserFacade userFacade = UserFacade.getInstance();
 	
 	
 	
@@ -49,6 +51,10 @@ public class Controller {
 	
 	public void add(User item){
 		userFacade.addItem(item);
+		ShoppingCart cart = userFacade.createUserCart(item);
+		ShoppingCartFacade shoppingCartFacade = ShoppingCartFacade.getInstance();
+		shoppingCartFacade.createCart(item.getEmail(), cart);
+		
 	}
 	
 	public void remove(User item) {
