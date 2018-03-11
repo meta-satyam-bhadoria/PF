@@ -3,13 +3,23 @@ package com.metacube.shoppingcart.main;
 import java.util.Scanner;
 import com.metacube.shoppingcart.view.InputAndOutput;
 
+/**
+ * This class is main class which contains main method to test the working of project.
+ * @author Satyam Bhadoria
+ *
+ */
 public class Main {
-	public static void main(String[] args){
+	
+	/**
+	 * Driver method to test the run
+	 * @param args - for command line arguments
+	 */
+	public static void main(String[] args) {
 		Scanner inputScanner  = new Scanner(System.in);
 		InputAndOutput shop = new InputAndOutput();
-		String inputChoice;
 		int choice;
-		do{
+		
+		do {
 			System.out.println("1. Add product");
 			System.out.println("2. Delete product");
 			System.out.println("3. Update product");
@@ -22,14 +32,13 @@ public class Main {
 			
 			System.out.println("9. Shop");
 			System.out.println("Enter ur choice");
-			inputChoice = inputScanner.next();
 			try{
-				choice = Integer.parseInt(inputChoice);
+				choice = Integer.parseInt( inputScanner.next() );
 			} catch(NumberFormatException e){
 				System.out.println("Enter correct input");
 				choice = 0;
 			}
-		} while(shop.takeInput(choice));
+		} while( shop.takeInput(choice) );
 		inputScanner.close();
 	}
 }

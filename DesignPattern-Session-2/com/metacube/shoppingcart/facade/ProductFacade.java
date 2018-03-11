@@ -43,7 +43,7 @@ public class ProductFacade {
 	public void addItem(Product product) {
 		
 		if(!searchProduct(product.getId())){
-			productDao.addItem(product);
+			((InMemoryProductDao) productDao).addItem(product);
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class ProductFacade {
 	public void removeItem(String productId) {
 		
 		if (searchProduct(productId)) {
-			productDao.removeItem(getProduct(productId));
+			((InMemoryProductDao) productDao).removeItem(getProduct(productId));
 		}
 	}
 	

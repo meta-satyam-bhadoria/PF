@@ -44,7 +44,7 @@ public class UserFacade {
 	public void addItem(User user) {
 		
 		if(!searchUser(user.getId())){
-			userDao.addItem(user);
+			((InMemoryUserDao) userDao).addItem(user);
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class UserFacade {
 	public void removeItem(String userId) {
 		
 		if(searchUser(userId)){
-			userDao.removeItem(getUser(userId));
+			((InMemoryUserDao) userDao).removeItem(getUser(userId));
 		}
 	}
 	
