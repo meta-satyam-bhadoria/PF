@@ -17,7 +17,7 @@ import com.metacube.shoppingcart.enumm.DatabaseEnum;
  */
 public class ShoppingCartFacade {
 	private static ShoppingCartFacade shoppingCartFacade;
-	private BaseDao<ShoppingCart> shoppingCartDao = (InMemoryShoppingCartDao) ShoppingCartDaoFactory.getInstance(DatabaseEnum.in_memory);
+	private BaseDao<ShoppingCart> shoppingCartDao = ShoppingCartDaoFactory.getInstance(DatabaseEnum.IN_MEMORY);
 	
 	/**
 	 * private constructor to restrict creating new objects.
@@ -70,10 +70,14 @@ public class ShoppingCartFacade {
 				((InMemoryShoppingCartDao) shoppingCartDao).updateTotal(total, userId);
 				
 			} else{
-				System.out.println("not suffi quant");
+				/*
+				 * Can return status for not sufficient quantity to provide
+				 */
 			}
 		} else{
-			System.out.println("product not found in shop facade");
+			/*
+			 * can return status for product not found in shop facade
+			 */
 		}
 	}
 	

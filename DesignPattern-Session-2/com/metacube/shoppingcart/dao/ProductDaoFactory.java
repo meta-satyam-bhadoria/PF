@@ -23,14 +23,14 @@ public class ProductDaoFactory {
 	 * @return baseProductDao object
 	 */
 	public static BaseDao<Product> getInstance(DatabaseEnum type) {
-		switch(type){
-			case in_memory:
-				baseProductDao = InMemoryProductDao.getInstance();
-				break;
-			case sql:
-				baseProductDao = null;
-				break;
+		
+		if(type == DatabaseEnum.IN_MEMORY) { 
+			baseProductDao = InMemoryProductDao.getInstance();
+			
+		} else if(type == DatabaseEnum.SQL) {
+			baseProductDao = null;
 		}
+				
 		return baseProductDao;
 	}
 }

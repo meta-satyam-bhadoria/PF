@@ -22,14 +22,13 @@ public class UserDaoFactory {
 	 * @return - baseUserDao object
 	 */
 	public static BaseDao<User> getInstance(DatabaseEnum type) {
-		switch(type){
-			case in_memory:
-				baseUserDao = InMemoryUserDao.getInstance();
-				break;
-			case sql:
-				baseUserDao = null;
-				break;
-			}
+
+		if(type == DatabaseEnum.IN_MEMORY) { 
+			baseUserDao = InMemoryUserDao.getInstance();
+			
+		} else if(type == DatabaseEnum.SQL) {
+			baseUserDao = null;
+		}
 		return baseUserDao;
 	}
 }

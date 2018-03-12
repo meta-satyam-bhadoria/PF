@@ -6,5 +6,5 @@ package com.metacube.shoppingcart.enumm;
  *
  */
 public enum DatabaseEnum {
-	in_memory, sql;
+	IN_MEMORY, SQL;
 }

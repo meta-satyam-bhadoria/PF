@@ -15,7 +15,7 @@ public class Main {
 	 * @param args - for command line arguments
 	 */
 	public static void main(String[] args) {
-		Scanner inputScanner  = new Scanner(System.in);
+		Scanner input  = new Scanner(System.in);
 		InputAndOutput shop = new InputAndOutput();
 		int choice;
 		
@@ -33,12 +33,12 @@ public class Main {
 			System.out.println("9. Shop");
 			System.out.println("Enter ur choice");
 			try{
-				choice = Integer.parseInt( inputScanner.next() );
+				choice = Integer.parseInt( input.next() );
 			} catch(NumberFormatException e){
 				System.out.println("Enter correct input");
 				choice = 0;
 			}
 		} while( shop.takeInput(choice) );
-		inputScanner.close();
+		input.close();
 	}
 }

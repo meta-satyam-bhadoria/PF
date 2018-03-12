@@ -22,14 +22,13 @@ public class ShoppingCartDaoFactory {
 	 * @return baseShoppingCartDao object
 	 */
 	public static BaseDao<ShoppingCart> getInstance(DatabaseEnum type) {
-		switch(type){
-			case in_memory:
-				baseShoppingCartDao = InMemoryShoppingCartDao.getInstance();
-				break;
-			case sql:
-				baseShoppingCartDao = null;
-				break;
-			}
+		
+		if(type == DatabaseEnum.IN_MEMORY) { 
+			baseShoppingCartDao = InMemoryShoppingCartDao.getInstance();
+			
+		} else if(type == DatabaseEnum.SQL) {
+			baseShoppingCartDao = null;
+		}
 		return baseShoppingCartDao;
 	}
 }

@@ -17,7 +17,7 @@ import com.metacube.shoppingcart.entity.User;
  */
 public class InputAndOutput {
 	
-	private Scanner inputScanner  = new Scanner(System.in);
+	Scanner input  = new Scanner(System.in);
 	
 	/**
 	 * Method which perform operation on the basis of selected choice
@@ -31,7 +31,7 @@ public class InputAndOutput {
 		switch(choice) {
 			case 1:
 				System.out.println("Enter name, price and stock of product");
-				Product item = new Product( inputScanner.next(), inputScanner.nextFloat(), inputScanner.nextInt() );
+				Product item = new Product( input.next(), input.nextFloat(), input.nextInt() );
 				productController.add(item);
 				break;
 				
@@ -42,7 +42,7 @@ public class InputAndOutput {
 					System.out.println( p.getId() + "\t" + p.getName() );
 				}
 				System.out.println("Enter Id of product to delete");
-				productController.removeProduct( inputScanner.next() );
+				productController.removeProduct( input.next() );
 				break;
 				
 			case 3:
@@ -52,7 +52,7 @@ public class InputAndOutput {
 					System.out.println( p.getId() + "\t" + p.getName() + "\t\t" + p.getPrice() + "\t\t" + p.getStock());
 				}
 				System.out.println("Enter Id, name, price and stock of product to update");
-				productController.update( inputScanner.next(), inputScanner.next(), inputScanner.nextFloat(), inputScanner.nextInt());
+				productController.update( input.next(), input.next(), input.nextFloat(), input.nextInt());
 				break;
 				
 			case 4:
@@ -64,7 +64,7 @@ public class InputAndOutput {
 				
 			case 5:
 				System.out.println("Enter email id, password and name of user");
-				User user = new User( inputScanner.next(), inputScanner.next(), inputScanner.next());
+				User user = new User( input.next(), input.next(), input.next());
 				userController.add(user);
 				break;
 				
@@ -75,7 +75,7 @@ public class InputAndOutput {
 					System.out.println( p.getId() + "\t" + p.getName() );
 				}
 				System.out.println("Enter Id of user to remove");
-				userController.removeUser( inputScanner.next() );
+				userController.removeUser( input.next() );
 				break;
 				
 			case 7:
@@ -85,7 +85,7 @@ public class InputAndOutput {
 					System.out.println( p.getId() + "\t" + p.getName() );
 				}
 				System.out.println("Enter Id, name email and password of user to update");
-				userController.update(inputScanner.next(), inputScanner.next(), inputScanner.next(), inputScanner.next());
+				userController.update(input.next(), input.next(), input.next(), input.next());
 				break;
 				
 			case 8:
@@ -98,7 +98,7 @@ public class InputAndOutput {
 				
 			case 9:
 				System.out.println("Enter username and password");
-				if( !cartShopping( inputScanner.next() )) {
+				if( !cartShopping( input.next() )) {
 					System.out.println("No username found. Try again!");
 				}
 				break;
@@ -141,7 +141,7 @@ public class InputAndOutput {
 	 * @return true or false
 	 */
 	public boolean shoppingCart(CartController cartController, String userId) {
-		switch( inputScanner.nextInt() ) {
+		switch( input.nextInt() ) {
 			case 1:
 				System.out.println("Product List\nId\tName\t\tPrice\t\tStock");
 				ProductController control = ProductController.getInstance();
@@ -150,12 +150,12 @@ public class InputAndOutput {
 					System.out.println( p.getId() + "\t" + p.getName() + "\t\t" + p.getPrice() + "\t\t" + p.getStock() );
 				}
 				System.out.println("Enter S.No. of product and quantity to add to cart");
-				cartController.addToCart( userId, Integer.toString(inputScanner.nextInt()), inputScanner.nextInt());
+				cartController.addToCart( userId, Integer.toString(input.nextInt()), input.nextInt());
 				break;
 				
 			case 2:
 				System.out.println("Enter Id of product to remove");
-				cartController.remove( inputScanner.next(), userId );
+				cartController.remove( input.next(), userId );
 				break;
 				
 			case 3:
