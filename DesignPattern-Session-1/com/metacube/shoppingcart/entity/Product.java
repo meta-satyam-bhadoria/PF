@@ -1,65 +1,64 @@
 package com.metacube.shoppingcart.entity;
 
 /**
- * this class sets or gets the product entities like name, id, price etc
- * @author satyam bhadoria
+ * This class contains the details about the product
+ * @author Satyam Bhadoria
  *
  */
-public class Product {
-	private static int countId = 0;
-	private int id;
-	private String name;
-	private float price;
+public class Product extends BaseEntity{
+	private static int countId = 1;
+	private float priceOfProduct;
+	private int stockAvailable;
 	
 	/**
-	 * constructor for iniating the entities
+	 * constructor
 	 * @param name - name of product
 	 * @param price - price of product
+	 * @param stock - stock of product
 	 */
-	public Product(String name, float price){
-		this.name = name;
-		this.price = price;
-		this.id = countId++;
+	public Product(String name, float price, int stock) {
+		super(Integer.toString(countId++), name);
+		this.priceOfProduct = price;
+		this.stockAvailable = stock;
 	}
-	
+
 	/**
-	 * gets the product price
-	 * @return - price of product
+	 * getter for returning the product price
+	 * @return price of product
 	 */
 	public float getPrice() {
-		return price;
+		return priceOfProduct;
 	}
-	
+
 	/**
-	 * sets the price of product
-	 * @param price - product price
+	 * setter for setting the price of product
+	 * @param price - price of product
 	 */
 	public void setPrice(float price) {
-		this.price = price;
+		this.priceOfProduct = price;
+	}
+
+	/**
+	 * getter for returning stock of product
+	 * @return stock of product
+	 */
+	public int getStock() {
+		return stockAvailable;
+	}
+
+	/**
+	 * setter for stock to update when some product id purchased
+	 * @param stock - quantity which have been reduced from product's stock
+	 */
+	public void setStock(int stock) {
+		this.stockAvailable -= stock;
 	}
 	
 	/**
-	 * gets the product id
-	 * @return - id of product
+	 * setter to update the stock of product
+	 * @param quantity - quantity of product which is available
 	 */
-	public int getId() {
-		return id;
+	public void setUpdatedStock(int quantity){
+		this.stockAvailable = quantity;
 	}
-	
-	/**
-	 * gets the product name
-	 * @return - name of product
-	 */
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * sets the name of product
-	 * @param name - product name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 }

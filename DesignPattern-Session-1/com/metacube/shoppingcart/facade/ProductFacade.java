@@ -2,89 +2,99 @@ package com.metacube.shoppingcart.facade;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 
+import com.metacube.shoppingcart.dao.BaseDao;
 import com.metacube.shoppingcart.dao.InMemoryProductDao;
-import com.metacube.shoppingcart.dao.ProductFactory;
-import com.metacube.shoppingcart.dao.DatabaseEnum;
-import com.metacube.shoppingcart.dao.StatusEnum;
+import com.metacube.shoppingcart.dao.ProductDao;
+import com.metacube.shoppingcart.dao.ProductDaoFactory;
 import com.metacube.shoppingcart.entity.Product;
+import com.metacube.shoppingcart.enumm.DatabaseEnum;
 
 /**
- * This class performs operation for insert, remove, update, and etc
- * @author satyam bhadoria
+ * This class gets the data from controller and perform some operation and pass to the dao layer.
+ * @author Satyam Bhadoria
  *
  */
 public class ProductFacade {
-	private static ProductFacade obj;
-	
-	InMemoryProductDao inMemoryDao = (InMemoryProductDao) ProductFactory.getInstance(DatabaseEnum.IN_MEMORY);
-	
-	/**
-	 * this method is used to return the object of this class
-	 * @return - object of this class (singleton class)
-	 */
-	public static ProductFacade getInstance() {
-		if (obj == null) {
-			obj = new ProductFacade();
-		}
-		
-		return obj;
-	}
+	private static ProductFacade productFacade;
+	private BaseDao<Product> productDao = ProductDaoFactory.getInstance(DatabaseEnum.IN_MEMORY);
 	
 	/**
-	 * private constructor to restrict creating object using new keyword
+	 * private constructor to restrict creating new objects.
 	 */
 	private ProductFacade() {}
 	
 	/**
-	 * this method returns the list of products came from inmemory storage
-	 * @return - list of products
+	 * Method which returns already created object of this class
+	 * @return - object of this class
 	 */
-	public List<Product> getAll(){
-		List<Product> list = new ArrayList<>();
-		for(Entry<Integer, Product> e: inMemoryDao.getAll().entrySet()){
-			list.add((Product)e.getValue());
+	public static ProductFacade getInstance() {
+		
+		if(productFacade == null){
+			productFacade = new ProductFacade();
 		}
-		return list;
+		return productFacade;
 	}
-
+	
 	/**
-	 * this method returns status of product after perform adding operation
+	 * Method which send command to dao to add product after performing some operation
 	 * @param product - product object
-	 * @return - status of added product
 	 */
-	public StatusEnum addProduct(Product product) {
-		return inMemoryDao.addProduct(product);
-	}
-	
-	/**
-	 * this method returns status of product after perform remove operation
-	 * @param productId - id of product
-	 * @return - status of product either removed or error
-	 */
-	public StatusEnum removeProduct(int productId) {
-		if( inMemoryDao.getAll().containsKey(productId) ){
-			inMemoryDao.removeProduct(productId);;
-			return StatusEnum.PRODUCT_REMOVED;
-		} else {
-			return StatusEnum.PRODUCT_NOT_FOUND;
+	public void addItem(Product product) {
+		
+		if(!searchProduct(product.getId())){
+			((InMemoryProductDao) productDao).addItem(product);
 		}
 	}
 	
 	/**
-	 * this method returns status of product after perform update operation
+	 * Method which send command to dao to remove product after performing some operation
 	 * @param productId - id of product
-	 * @param productName - name of product
+	 */
+	public void removeItem(String productId) {
+		
+		if (searchProduct(productId)) {
+			((InMemoryProductDao) productDao).removeItem(getProduct(productId));
+		}
+	}
+	
+	/**
+	 * Method which search for product that it is available or not
+	 * @param productId - id of product
+	 * @return - true or false
+	 */
+	public boolean searchProduct(String productId){
+		return productDao.getList().containsKey(productId);
+	}
+	
+	/**
+	 * Method which send command to dao layer to return list of products
+	 * @return - list of product came from dao layer
+	 */
+	public List<Product> getList(){
+		return new ArrayList<>(productDao.getList().values());
+	}
+	
+	/**
+	 * Method which update details of product with the help of dao
+	 * @param productId - id of product
+	 * @param name - name of product
 	 * @param price - price of product
-	 * @return - status of product either update successful or error
+	 * @param stock - total quantity of that product
 	 */
-	public StatusEnum updateProduct(int productId, String productName, float price ){
-		if(inMemoryDao.getAll().containsKey(productId)){
-			inMemoryDao.updateProduct(productId, productName, price);
-			return StatusEnum.UPDATE_SUCCESSFULL;
-		} else {
-			return StatusEnum.PRODUCT_NOT_FOUND;
+	public void updateItem(String productId, String name, float price, int stock){
+		
+		if (searchProduct(productId)) {
+			((ProductDao) productDao).updateItem(getProduct(productId), name, price, stock);
 		}
+	}
+	
+	/**
+	 * Method which return product object came from dao
+	 * @param productId - id of product
+	 * @return - product object
+	 */
+	public Product getProduct(String productId) {
+		return ((InMemoryProductDao) productDao).getProduct(productId);
 	}
 }
