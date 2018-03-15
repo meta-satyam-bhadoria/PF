@@ -29,7 +29,7 @@ import org.json.simple.parser.*;
 public class EmployeeAPI {
 	
 	private JSONParser parser = new JSONParser();
-	private File file = new File("C:/Users/admin/Documents/myWorkPlace/WebService-Session-2/src/com/employee/files/employee.json");
+	private File file = new File("C:/Users/admin/Documents/myWorkPlace/WebService-Session-2/src/com/metacube/files/employee.json");
 
 	/**
 	 * Method which returns json of all employee
@@ -44,7 +44,7 @@ public class EmployeeAPI {
 	
 	/**
 	 * Method which return employee detail with particuolar id
-	 * @param id - id os employee
+	 * @param id - id of employee
 	 * @return employee detail in json format
 	 * @throws ParseException - exception in parsing
 	 */
@@ -91,6 +91,7 @@ public class EmployeeAPI {
 			
 			if(!employee.get("name").toString().equalsIgnoreCase(employeeName)){
 				employeesArray.remove(employee);
+				i--;
 			}
 		}
 		return employeesJsonObject.toString();
