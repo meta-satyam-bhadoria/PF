@@ -38,8 +38,7 @@ public class EmployeeAPI {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAllEmployees(){
-		String employeesJsonString = getFileContent();
-		return employeesJsonString;
+		return getFileContent();
 	}
 	
 	/**
@@ -112,7 +111,7 @@ public class EmployeeAPI {
 		JSONObject employeesJsonObject = (JSONObject) parser.parse(getFileContent());
 		JSONArray employeesArray = (JSONArray) employeesJsonObject.get("employee");
 		
-		if(employeesArray.size() > 0) {
+		if(!employeesArray.isEmpty()) {
 			id = Integer.parseInt(((JSONObject) employeesArray.get(employeesArray.size() - 1)).get("id").toString());
 		}
 		addEmployee(id + 1, employee);
@@ -173,7 +172,6 @@ public class EmployeeAPI {
 			
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-			System.out.println("file error");
 		}
 		return employeesJsonString;
 	}
