@@ -1,29 +1,28 @@
 package test;
 
 import static org.junit.Assert.*;
+import main.java.util.DoublyLinkedList;
 
 import org.junit.Test;
 
-import main.java.util.ArrayList;
-
 /**
- * This class is used to test the methods of ArrayList class
+ * This class is used to test the implementation of LinkedList class
  * @author satyam bhadoria
  *
  */
-public class ArrayListTest {
+public class DoublyLinkedListTest {
 
 	/**
 	 * Method to test add method for successful result
 	 */
 	@Test
 	public void testAddMethod() {
-		ArrayList<String> s = new ArrayList<>();
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
-		s.add(1, "2");
+		s.add(0, "2");
 		s.add("3");
-		String[] expected = new String[] {"1","2","3"};
-		assertArrayEquals(expected, s.getArray());  
+		String[] expected = new String[] {"2","1","3"};
+		assertArrayEquals(expected, s.toArray());
 	}
 	
 	/**
@@ -32,12 +31,12 @@ public class ArrayListTest {
 	 */
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testAddMethodForException() {
-		ArrayList<String> s = new ArrayList<>();
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add(2, "2");
 		s.add("3");
 		String[] expected = new String[] {"1","2","3"};
-		assertArrayEquals(expected, s.getArray());  
+		assertArrayEquals(expected, s.toArray());  
 	}
 	
 	/**
@@ -45,7 +44,7 @@ public class ArrayListTest {
 	 */
 	@Test
 	public void testRemoveMethod() {
-		ArrayList<String> s = new ArrayList<>();
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add("2");
 		s.add("3");
@@ -58,7 +57,7 @@ public class ArrayListTest {
 	 */
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemoveMethodForException() {
-		ArrayList<String> s = new ArrayList<>();
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add("2");
 		s.add("3");
@@ -71,7 +70,7 @@ public class ArrayListTest {
 	 */
 	@Test
 	public void testRemoveMethodByElement() {
-		ArrayList<String> s = new ArrayList<>();
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add("2");
 		s.add("3");
@@ -84,7 +83,7 @@ public class ArrayListTest {
 	 */
 	@Test
 	public void testRemoveMethodByElementUnSuccessful() {
-		ArrayList<String> s = new ArrayList<>();
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add("2");
 		s.add("3");
@@ -93,58 +92,56 @@ public class ArrayListTest {
 	}
 	
 	/**
-	 * method to test indexOf method returning index of found element
+	 * method to test getElement method at particular position
 	 */
 	@Test
-	public void testIndexOfMethod() {
-		ArrayList<String> s = new ArrayList<>();
+	public void testGetElementMethod(){
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add("2");
 		s.add("3");
-		int expected = 2;
-		assertEquals(expected, s.indexOf("3"));  
+		String expected = "1";
+		assertEquals(expected, s.getElement(0));  
 	}
 	
 	/**
-	 * method to test indexOf method returning index (-1) of not found element
+	 * method to test getElement method at particular position for getting IndexOutOfBoundsException
 	 */
-	@Test
-	public void testIndexOfMethodNotFound() {
-		ArrayList<String> s = new ArrayList<>();
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testGetElementMethodForException(){
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
 		s.add("1");
 		s.add("2");
 		s.add("3");
-		int expected = -1;
-		assertEquals(expected, s.indexOf("4"));  
+		String expected = "2";
+		assertEquals(expected, s.getElement(3));  
 	}
 	
 	/**
-	 * method to test append method when list is to be added
+	 * method to test reverse method 
 	 */
 	@Test
-	public void testAppendMethodForList(){
-		ArrayList<String> s1 = new ArrayList<>();
-		ArrayList<String> s2 = new ArrayList<>();
-		s1.add("1");
-		s1.add("2");
-		s2.add("3");
-		s2.add("4");
-		s1.append(s2);
-		String[] expected = new String[] {"1","2","3","4"};
-		assertArrayEquals(expected, s1.getArray()); 
+	public void testReverseMethod() {
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
+		s.add("1");
+		s.add("2");
+		s.add("3");
+		s.reverse();
+		String[] expected = new String[] {"3","2","1"};
+		assertArrayEquals(expected, s.toArray());
 	}
 	
 	/**
-	 * method to test append method when array is to be added
+	 * method to test the sort method
 	 */
 	@Test
-	public void testAppendMethodForArray(){
-		ArrayList<String> s1 = new ArrayList<>();
-		s1.add("1");
-		s1.add("2");
-		String[] s2 = new String[] {"3","4"};
-		s1.append(s2);
-		String[] expected = new String[] {"1","2","3","4"};
-		assertArrayEquals(expected, s1.getArray()); 
+	public void testSortMethod() {
+		DoublyLinkedList<String> s = new DoublyLinkedList<>();
+		s.add("2");
+		s.add("1");
+		s.add("3");
+		s.sort();
+		String[] expected = new String[] {"1","2","3"};
+		assertArrayEquals(expected, s.toArray());
 	}
 }
