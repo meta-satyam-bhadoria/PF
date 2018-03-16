@@ -2,22 +2,25 @@ package myjava.util;
 
 import java.util.Arrays;
 
-public class LinkedList<T> {
+public class Doubly<T> {
 	private Node<T> start;
+	private Node<T> end;
 	
-	public LinkedList () {
+	public Doubly () {
 		this.start = null;
+		this.end = null;
 	}
 	
 	public void add (T item){
-        Node<T> nptr = new Node<>(item);  
+        Node<T> nptr = new Node<>(item);
         if(this.start == null) {
             this.start = nptr;
+            this.end = this.start;
         }
         else {
-        	Node<T> end = lastNode();
-            end.setNextLink(nptr);
-            end = nptr;
+        	nptr.setPreviousLink(end);
+            this.end.setNextLink(nptr);
+            this.end = nptr;
         }
     }
 	
@@ -29,13 +32,19 @@ public class LinkedList<T> {
 		if(position == 0){
 			Node<T> ptr = new Node<>(item);
 			ptr.setNextLink(nptr);
+			
+			if(nptr != null) {
+				nptr.setPreviousLink(ptr);
+			}
 			this.start = ptr;
 			added = true;
+			
 		} else if(position > 0){
 			while(nptr != null){
 				if(position == i + 1) {
 					Node<T> ptr =new Node<>(item);
 					ptr.setNextLink(nptr.getNextLink());
+					ptr.setPreviousLink(nptr);
 					nptr.setNextLink(ptr);
 					added = true;
 					break;
@@ -50,19 +59,37 @@ public class LinkedList<T> {
 		}
 	}
 	
+	public void remove (T item) {
+		 Node<T> ptr = this.start;
+		 int i = 0;
+		 while (ptr != null) {
+			 i++;
+			 if (item == ptr.getData()){
+				 remove (i);
+				 break;
+			 }
+			 ptr = ptr.getNextLink();
+		 }
+		 System.out.println("Item Not Found");
+	}
+	
 	public void remove (int position) {
-		int i = 0;
+		int i = 1;
 		boolean removed = false;
 		Node<T> nptr = this.start;
 		
-		if(!isEmpty()){
+		if(nptr != null){
 			if(position == 0){
 				this.start = this.start.getNextLink();
+				this.start.setPreviousLink(null);
 				removed = true;
 			} else if(position > 0){
-				while(nptr.getNextLink() != null) {
-					if(position == i + 1) {
-						nptr.setNextLink(nptr.getNextLink().getNextLink());
+				nptr = nptr.getNextLink();
+				while(nptr != null) {
+					if(position == i) {
+						Node<T> ptr = nptr.getPreviousLink();
+						ptr.setNextLink(nptr.getNextLink());
+						nptr.getNextLink().setPreviousLink(ptr);
 						removed = true;
 						break;
 					}
@@ -75,57 +102,19 @@ public class LinkedList<T> {
 		if(!removed) {
 			throw new IndexOutOfBoundsException();
 		}
-		
-		
-	}
-	
-	
-	public boolean remove (T item) {
-		
-		boolean removed = false;
-		Node<T> nptr = this.start;
-		if(!isEmpty()){
-			if(nptr.getData() == item){
-				this.start = this.start.getNextLink();
-				removed = true;
-			} else {
-				while(nptr.getNextLink() != null) {
-					if(nptr.getNextLink().getData() == item) {
-						nptr.setNextLink(nptr.getNextLink().getNextLink());
-						removed = true;
-						break;
-					}
-					nptr = nptr.getNextLink();
-				}
-			}
-		} 
-		
-		return removed;
 	}
 	
 	public int indexOf (T item) {
+		int index = -1;
 		Node<T> nptr = this.start;
-		int i = -1;
-		while(nptr != null) {
-			if (nptr.getData() == item) {
-				i++;
+		while (nptr != null) {
+			index++;
+			if(nptr.getData() == item) {
 				break;
 			}
 			nptr = nptr.getNextLink();
 		}
-		return i;
-	}
-	
-	public void reverse () {
-		Node<T> ptr = this.start;
-		if(ptr != null){
-			while (ptr.getNextLink() != null) {
-				Node<T> temp = ptr.getNextLink();
-				ptr.setNextLink(temp.getNextLink());
-				temp.setNextLink(this.start);
-				this.start = temp;
-			}
-		}
+		return index;
 	}
 	
 	public void sort (){
@@ -141,21 +130,14 @@ public class LinkedList<T> {
 		}
 	}
 	
-	private boolean isEmpty(){
-		if( this.start == null) {
-			return true;
-		}
-		return false;
-	}
-	
-	private Node<T> lastNode() {
+	public T[] toArray (T[] arr) {
 		Node<T> ptr = this.start;
-		
-		while(ptr.getNextLink() != null){
+		int i = 0;
+		while (ptr != null) {
+			arr[i++] = ptr.getData();
 			ptr = ptr.getNextLink();
 		}
-		
-		return ptr;
+		return arr;
 	}
 	
 	private int size(){
@@ -167,16 +149,6 @@ public class LinkedList<T> {
 			nptr = nptr.getNextLink();
 		}
 		return size;
-	}
-	
-	public T[] toArray (T[] arr) {
-		Node<T> ptr = this.start;
-		int i = 0;
-		while (ptr != null) {
-			arr[i++] = ptr.getData();
-			ptr = ptr.getNextLink();
-		}
-		return arr;
 	}
 	
 	public void display () {

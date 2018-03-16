@@ -47,4 +47,24 @@ public class ArrayListTest {
 		String expected = "1";
 		assertEquals(expected, s.remove(5));  
 	}
+	
+	@Test
+	public void testIndexOfMethod() {
+		ArrayList<String> s = new ArrayList<>();
+		s.add("1");
+		s.add("2");
+		s.add("3");
+		int expected = 2;
+		assertEquals(expected, s.indexOf("3"));  
+	}
+	
+	@Test
+	public void testIndexOfMethodNotFound() {
+		ArrayList<String> s = new ArrayList<>();
+		s.add("1");
+		s.add("2");
+		s.add("3");
+		int expected = -1;
+		assertEquals(expected, s.indexOf("4"));  
+	}
 }
