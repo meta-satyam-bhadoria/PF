@@ -1,7 +1,5 @@
 package main.java.util;
 
-import java.util.Arrays;
-
 /**
  * This class implements the stack
  * @author satyam bhadoria
@@ -40,7 +38,7 @@ public class Stack<T> {
 			this.top = this.top.getNextLink();
 			
 		} else{
-			throw new IndexOutOfBoundsException("no element to remove");
+			throw new IndexOutOfBoundsException("Stack UnderFLow");
 		}
 		return removedElement;
 	}
@@ -52,7 +50,7 @@ public class Stack<T> {
 	public T peek() {
 		
 		if(this.top == null) {
-			throw new IndexOutOfBoundsException("stack is empty");
+			throw new IndexOutOfBoundsException("Stack is empty");
 			
 		} else{ 
 			return this.top.getData();
@@ -97,14 +95,5 @@ public class Stack<T> {
 	 */
 	public boolean isEmpty() {
 		return this.top == null;
-	}
-	
-	public void display() {
-		Node<T> ptr = this.top;
-		while(ptr != null) {
-			System.out.println(ptr.getData());
-			ptr = ptr.getNextLink();
-		}
-		
 	}
 }
