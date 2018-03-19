@@ -44,6 +44,10 @@ public class Queue<T>{
     	this.array = createArray(0);
     }
     
+    /**
+     * method to get the front element of the queue
+     * @return font element of the queue
+     */
     public T getFront() {
     	return this.array[0];
     }
@@ -77,6 +81,11 @@ public class Queue<T>{
         return this.array;
     }
     
+    /**
+     * method to create array of given size
+     * @param arrSize - size of array
+     * @return created array
+     */
     private T[] createArray(int arrSize) {
     	return (T[]) new Object[arrSize];
     }
@@ -88,8 +97,10 @@ public class Queue<T>{
     @Override
     public String toString() {
         String s = "[";
+        
         if(size() != 0) {
             s += this.array[0];
+            
             for(int i = 1; i < this.array.length; i++) {
                 s += ", " + this.array[i];
             }

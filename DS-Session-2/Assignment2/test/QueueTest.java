@@ -5,6 +5,11 @@ import main.java.util.Queue;
 
 import org.junit.Test;
 
+/**
+ * this class is to test the implementation of queue class
+ * @author Satyam Bhadoria
+ *
+ */
 public class QueueTest {
 
 	/**
