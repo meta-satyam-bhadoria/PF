@@ -2,7 +2,7 @@ package main.java.util;
 
 /**
  * This class is used as a null node
- * @author satyam bhadoria
+ * @author Satyam Bhadoria
  *
  * @param <T> - generic parameter
  */
