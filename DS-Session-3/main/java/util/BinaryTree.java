@@ -2,7 +2,7 @@ package main.java.util;
 
 /**
  * This class behaves as a node
- * @author Satya Bhadoria
+ * @author Satyam Bhadoria
  *
  * @param <T> - generic parameter
  */
@@ -78,32 +78,10 @@ public class BinaryTree<T> {
 	}
 	
 	/**
-	 * method to add node in a binary tree with the logic left subtree contain data smaller than parent and
-	 * right subtree contain data larger than parent node
-	 * @param node - node to be added
+	 * method to create binary tree using an array in left ot right
+	 * @param array - given array
+	 * @return root node of created tree
 	 */
-	public void addToBinaryTree(BinaryTree<T> node) {
-		
-		if( (node.getData().toString().compareTo( this.data.toString() ) > 0) ) {
-			
-			if(this.rightChild == null) {
-				this.rightChild = node;
-				
-			} else{
-				this.rightChild.addToBinaryTree(node);
-			}
-		} else {
-			
-			if(this.leftChild == null) {
-				this.leftChild = node;
-				
-			} else {
-				this.leftChild.addToBinaryTree(node);
-			}
-		}
-	}
-	
-	
 	public BinaryTree<T> createBinaryTree(T[] array) {
 		
 		if(array.length == 0) {
@@ -112,7 +90,12 @@ public class BinaryTree<T> {
 		return createBinaryTree(array, 0);
 	}
 	
-	
+	/**
+	 * method to create binary tree using an array in left ot right
+	 * @param array - given array
+	 * @param i - index for creating node
+	 * @return root node for passed array
+	 */
 	private BinaryTree<T> createBinaryTree(T[] array, int i) {
 		BinaryTree<T> node = new BinaryTree<>(array[i]);
 		
@@ -124,21 +107,5 @@ public class BinaryTree<T> {
 			node.setRight( createBinaryTree(array, (i * 2) + 2) );
 		}
 		return node;
-	}
-	
-	public void appendNodeToBinaryTree(BinaryTree<T> node) {
-		
-		
-	}
-	
-	
-	private void searchForApend() {
-		if(this.rightChild != null) {
-			this.rightChild.searchForApend();
-		}
-		
-		if(this.leftChild == null) {
-			
-		}
 	}
 } 
