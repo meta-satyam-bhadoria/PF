@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Satyam Bhadoria" />
+	<title>Profile </title>
+	<link rel="stylesheet" href="style.css" >
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Encode+Sans+Expanded|Nanum+Gothic+Coding|Open+Sans+Condensed:300|Rammetto+One|Titillium+Web" rel="stylesheet">
+</head>
+<body>
+	<div class="top-fixed">
+		<div class="header flex">
+			<div class="heading auto-padding">
+				<h1>Profile</h1>
+			</div>
+			<div class="flex-auto auto-padding">
+				<div class="nav right">
+					<ul class="ul">
+						<li><a href="">Home</a></li>
+						<li><a href="">Gallery</a></li>
+						<li><a href="">Profile</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container" style="margin-top: 70px;">
+		
+		<!-- cover and profile pic -->
+		<div class="row">
+			<div class="cover-photo" style="background-image: url('cover pic1.jpg');">
+				<div class="profile-pic-container">
+					<div class="profile-pic-wrap">
+						<div class="profile-pic">
+							<img src="satyam.jpg" class="img">
+						</div>
+						<div class="profile-short center container">
+							<h1>Satyam Bhadoria</h1>
+							<div class="profile-about">
+								<p>
+									I'm the one who is not same for everyone.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- main profile -->
+		<div class="row">
+			<div class="profile-container">
+				<div class="container">
+					<div class="navbar">
+						<ul class="ul">
+							<li><label class="auto-padding" for="general">General Information</label></li>
+							<li><label class="auto-padding" for="biography">Biography</label></li>
+							<li><label class="auto-padding" for="education">Education</label></li>
+							<li><label class="auto-padding" for="contact">Contact Information</label></li>
+						</ul>
+					</div>
+					<div class="profile-wrap">
+						<div id="general-profile">
+							<input id="general" type="radio" name="profile" hidden >
+							<div class="toggle">
+								<div class="flex">
+									<div class="col">
+										Name
+									</div>
+									<div class="flex-auto">
+										Satyam Singh Bhadoria
+									</div>
+								</div>
+								<div class="flex">
+									<div class="col">
+										Date of Birth
+									</div>
+									<div class="flex-auto">
+										7th of november, 1997
+									</div>
+								</div>
+								<div class="flex">
+									<div class="col">
+										Marital Status
+									</div>
+									<div class="flex-auto">
+										Single
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="bio-graphy">
+							<input id="biography" type="radio" name="profile" hidden>
+							<div class="toggle">
+								<p style="text-indent: 30px; text-align: justify;">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet molestie tellus, vel tincidunt sapien. Donec quis ornare nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus eget felis ac tortor malesuada malesuada. Aenean varius id neque et fringilla. Nullam purus augue, rhoncus ac condimentum id, viverra vel enim. Nullam vestibulum massa et sagittis finibus. Phasellus vehicula, dui non laoreet ultrices, quam ante vehicula nulla, a hendrerit felis sem nec mi. Vivamus sed risus quis enim eleifend interdum. Vestibulum id tempus justo. Pellentesque lobortis ac nulla a molestie. Ut in nisl posuere, interdum odio at, lobortis purus. Aenean blandit lacus nec erat condimentum lobortis. Sed mattis velit eget elit suscipit pharetra.
+								</p>
+							</div>
+						</div>
+						<div id="education-information">
+							<input id="education" type="radio" name="profile" hidden>
+							<div class="toggle">
+								<div class="flex">
+									<div class="card flex-auto">
+										<div class="center">
+											<div class="card-icon">
+												<div style="font-size: 30px;">
+													<i class="fa fa-graduation-cap card-ico"></i>
+												</div>
+											</div>
+										</div>
+										<div class="card-heading center">
+											Rustamji Insitute of Technology
+										</div>
+										<div class="card-body center">
+											<p>
+												B.E. CSE
+											</p>
+											<p>
+												2014-18
+											</p>
+										</div>
+									</div>
+									<div class="card flex-auto">
+										<div class="center">
+											<div class="card-icon">
+												<div style="font-size: 30px;">
+													<i class="fa fa-university card-ico"></i>
+												</div>
+											</div>
+										</div>
+										<div class="card-heading center">
+											GreenWood Public School
+										</div>
+										<div class="card-body center">
+											<p>
+												Higher Secondary School
+											</p>
+											<p>
+												2013-14
+											</p>
+										</div>
+									</div>
+									<div class="card flex-auto">
+										<div class="center">
+											<div class="card-icon">
+												<div style="font-size: 30px;">
+													<i class="fa fa-university card-ico"></i>
+												</div>
+											</div>
+										</div>
+										<div class="card-heading center">
+											GreenWood Public School
+										</div>
+										<div class="card-body center">
+											<p>
+												Secondary School
+											</p>
+											<p>
+												2011-12
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="contact-information">
+							<input id="contact" type="radio" name="profile" hidden checked>
+							<div class="toggle">
+								<div class="flex">
+									<div class="card flex-auto">
+										<div class="center">
+											<div class="card-icon">
+												<div style="font-size: 30px;">
+													<i class="fas fa-mobile-alt card-ico"></i>
+												</div>
+											</div>
+										</div>
+										<div class="card-heading center">
+											Mobile
+										</div> 
+										<div class="card-body center">
+											<p>
+												9630950129
+											</p>
+										</div>
+									</div>
+									<div class="card flex-auto">
+										<div class="center">
+											<div class="card-icon">
+												<div style="font-size: 30px;">
+													<i class="fas fa-envelope card-ico"></i>
+												</div>
+											</div>
+										</div>
+										<div class="card-heading center">
+											Email
+										</div>
+										<div class="card-body center">
+											<p>
+												satyam.bhadoria@metacube.com
+											</p>
+										</div>
+									</div>
+									<div class="card flex-auto">
+										<div class="center">
+											<div class="card-icon">
+												<div style="font-size: 30px;">
+													<i class="fas fa-home card-ico"></i>
+												</div>
+											</div>
+										</div>
+										<div class="card-heading center">
+											Address
+										</div>
+										<div class="card-body center">
+											<p>
+												Adarsh Puram, Gwalior
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
