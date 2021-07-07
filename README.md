@@ -1,2 +1,2 @@
-# PF
-This is Programming Fundamental repository for uploading assignment related to this session.
+# DataStructure
+This is Data Structure branch for uploading assignment related to this session.
